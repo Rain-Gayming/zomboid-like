@@ -1,0 +1,101 @@
+[gd_scene load_steps=20 format=3 uid="uid://dlj4u2fwgy5s5"]
+
+[ext_resource type="Script" path="res://weapons/scripts/shoot_gun.gd" id="1_ma6wc"]
+[ext_resource type="Texture2D" uid="uid://vepvjstar6fq" path="res://weapons/shotgun/sprites/idle/shotgun_idle1.png" id="2_wwpo0"]
+[ext_resource type="Texture2D" uid="uid://cde8ygyr5mgjq" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot1.png" id="2_yn77m"]
+[ext_resource type="Texture2D" uid="uid://ckvgopurmtem2" path="res://weapons/shotgun/sprites/idle/shotgun_idle2.png" id="3_3uoq5"]
+[ext_resource type="Texture2D" uid="uid://bd8f6b6u1t2n6" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot2.png" id="3_e8p2b"]
+[ext_resource type="Texture2D" uid="uid://dr7470i6t3mxf" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot3.png" id="4_pyv5e"]
+[ext_resource type="Texture2D" uid="uid://bps67r0ev34mf" path="res://weapons/shotgun/sprites/idle/shotgun_idle3.png" id="4_y2vg3"]
+[ext_resource type="Texture2D" uid="uid://21sd5mq0a4si" path="res://weapons/shotgun/sprites/idle/shotgun_idle4.png" id="5_e1t32"]
+[ext_resource type="Texture2D" uid="uid://c4th3a25kgt6c" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot4.png" id="5_kh2u0"]
+[ext_resource type="Texture2D" uid="uid://40r55idsqxie" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot5.png" id="6_n8vwy"]
+[ext_resource type="Texture2D" uid="uid://bteqprscuvl4j" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot6.png" id="7_jtl6o"]
+[ext_resource type="Texture2D" uid="uid://dp503umv6lyk4" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot7.png" id="8_mecit"]
+[ext_resource type="Texture2D" uid="uid://dp73o7c0nq4ub" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot8.png" id="9_rgf3s"]
+[ext_resource type="Texture2D" uid="uid://cfknn6338drqp" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot9.png" id="10_qmlc1"]
+[ext_resource type="Texture2D" uid="uid://dw7k1x8rjafbt" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot10.png" id="11_ko0rm"]
+[ext_resource type="Texture2D" uid="uid://c0k82gi2cuwjy" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot11.png" id="12_8jlun"]
+[ext_resource type="Texture2D" uid="uid://dox3odu3xya7v" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot12.png" id="13_64hpn"]
+[ext_resource type="Texture2D" uid="uid://dluxeu6ko0i4q" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot13.png" id="14_7746d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gu62l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wwpo0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3uoq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y2vg3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e1t32")
+}],
+"loop": true,
+"name": &"shotgun_idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yn77m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e8p2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pyv5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kh2u0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n8vwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jtl6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mecit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rgf3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qmlc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ko0rm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8jlun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_64hpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7746d")
+}],
+"loop": true,
+"name": &"shotgun_shoot",
+"speed": 12.0
+}]
+
+[node name="shotgun" type="Node3D" node_paths=PackedStringArray("anim")]
+transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.118146, 0)
+script = ExtResource("1_ma6wc")
+anim = NodePath("AnimatedSprite3D")
+shoot_cooldown = 1.0
+shoot_range = 25.0
+anim_name = "shotgun"
+damage = 30.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.856889, 0.515502, 0, -0.515502, 0.856889, 0.211421, 0.205804, 0)
+cast_shadow = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_gu62l")
+animation = &"shotgun_shoot"
+frame_progress = 0.348449
