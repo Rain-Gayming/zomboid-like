@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=23 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://player/camera.gd" id="1_eii5t"]
 [ext_resource type="Script" path="res://player/player_movement.gd" id="1_f18qs"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://world/scripts/pickup.gd" id="3_ch2e3"]
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="4_y3ber"]
 [ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="6_w0ex0"]
+[ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="9_50ie0"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="10_ylfeo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5tnbj"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -32,6 +34,16 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_afhme"]
 size = Vector3(10.2803, 1, 13.2734)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3n1d"]
+render_priority = 0
+shader = ExtResource("10_ylfeo")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xksy6"]
 radius = 0.685569
 height = 3.68576
@@ -40,7 +52,21 @@ height = 3.68576
 size = Vector3(1, 4.27051, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uw577"]
+radius = 0.80583
 height = 3.64708
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1fds"]
+render_priority = 0
+next_pass = ExtResource("9_50ie0")
+shader = ExtResource("10_ylfeo")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vxamo"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -145,13 +171,44 @@ mesh = SubResource("BoxMesh_pc0nj")
 [node name="red_room" type="Node3D" parent="environment/world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.43, -0.012, 160.8)
 
-[node name="door" type="CSGMesh3D" parent="environment/world/red_room"]
-transform = Transform3D(0.355565, -6.51324e-14, -2.30028e-06, -3.76161e-09, -12.0982, 3.22427e-06, -3.10845e-08, -1.4825e-06, -26.3121, 24.7515, -9.65851, 2.27384)
+[node name="door" type="Node3D" parent="environment/world/red_room"]
+transform = Transform3D(0.355565, -6.51324e-14, -2.30028e-06, -3.76161e-09, -12.0982, 3.22427e-06, -3.10845e-08, -1.4825e-06, -26.3121, 24.7515, -9.65851, 2.27383)
+
+[node name="door" type="CSGMesh3D" parent="environment/world/red_room/door" node_paths=PackedStringArray("move_to", "start_at")]
+transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_s0oo1")
-move_up = true
-kill_tag = 1
+condition_tag = 1
+return_tag = -885
+move_to = NodePath("../move_to")
+start_at = NodePath("../start_at")
+
+[node name="move_to" type="Node3D" parent="environment/world/red_room/door"]
+transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
+
+[node name="start_at" type="Node3D" parent="environment/world/red_room/door"]
+transform = Transform3D(1, 2.71051e-20, 9.09495e-13, 6.50464e-17, 1, -8.52651e-14, 0, 7.10543e-15, 1, 0, 0.446347, 0)
+
+[node name="door2" type="Node3D" parent="environment/world/red_room"]
+transform = Transform3D(0.355565, -6.51324e-14, -2.30028e-06, -3.76161e-09, -12.0982, 3.22427e-06, -3.10845e-08, -1.4825e-06, -26.3121, 24.7515, 2.54149, 2.27383)
+
+[node name="lock_door" type="CSGMesh3D" parent="environment/world/red_room/door2" node_paths=PackedStringArray("move_to", "start_at")]
+transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+script = ExtResource("1_s0oo1")
+condition = 1
+condition_tag = 2
+return_tag = 3
+move_to = NodePath("../move_to")
+start_at = NodePath("../start_at")
+
+[node name="move_to" type="Node3D" parent="environment/world/red_room/door2"]
+transform = Transform3D(1, 5.42101e-20, 9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.01399, 0)
+
+[node name="start_at" type="Node3D" parent="environment/world/red_room/door2"]
+transform = Transform3D(1, 5.42101e-20, 9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, -0.362733, 0)
 
 [node name="pillar" type="CSGMesh3D" parent="environment/world/red_room"]
 transform = Transform3D(2.59, 0, 0, 0, 5.134, 0, 0, 0, 2.59, 64.6, -15.6, 3.60001)
@@ -240,14 +297,21 @@ mesh = SubResource("BoxMesh_pc0nj")
 [node name="second_room" type="Node3D" parent="environment/world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 161.8)
 
-[node name="door2" type="CSGMesh3D" parent="environment/world/second_room"]
+[node name="door" type="Node3D" parent="environment/world/second_room"]
 transform = Transform3D(-4.66267e-08, -1.4825e-06, -26.3121, -3.76161e-09, -12.0982, 3.22427e-06, -0.355565, 1.1985e-13, 3.45042e-06, -1.21857, 4.52949, 28.2738)
+
+[node name="door2" type="CSGMesh3D" parent="environment/world/second_room/door" node_paths=PackedStringArray("move_to")]
+transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_s0oo1")
 condition = 1
-move_up = true
-collection_tag = 2
+condition_tag = 2
+return_tag = -30
+move_to = NodePath("../move_to")
+
+[node name="move_to" type="Node3D" parent="environment/world/second_room/door"]
+transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55271e-15, 1, 0, -1.53742, 8.56817e-08)
 
 [node name="blocks" type="Node3D" parent="environment/world/second_room"]
 
@@ -317,6 +381,7 @@ jump_height = 5.0
 [node name="player_mesh" type="CSGMesh3D" parent="player/player"]
 visible = false
 mesh = ExtResource("1_kgefs")
+material = SubResource("ShaderMaterial_c3n1d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player/player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84637, -0.0775976)
@@ -355,7 +420,44 @@ shape = SubResource("CapsuleShape3D_uw577")
 
 [node name="HumanoidMesh" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
 mesh = ExtResource("1_kgefs")
 skeleton = NodePath("../..")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 172.987, -13.327, 152.609)
+script = ExtResource("6_w0ex0")
+current_health = 30.0
+tag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("1_kgefs")
+skeleton = NodePath("../..")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="crosshair" type="TextureRect" parent="ui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_vxamo")
 
 [connection signal="area_entered" from="environment/world/red_room/red_skull/collision_area" to="environment/world/red_room/red_skull" method="_on_collision_area_area_entered"]

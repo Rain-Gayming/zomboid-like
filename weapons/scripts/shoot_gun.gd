@@ -1,7 +1,10 @@
 extends Node3D
 
-@export_group("refereences")
+@export_group("references")
 @export var anim: AnimatedSprite3D
+
+@export_group("animation")
+@export var shoot_animation_frames: int
 
 @export_group("audio")
 @export var shoot_effects: Array[AudioStreamPlayer3D]
@@ -30,7 +33,7 @@ func _process(delta):
 	
 	#if the shooting animation is finished, play the idle animation
 	if anim.animation == anim_name + "_shoot":
-		if anim.frame == 12:
+		if anim.frame == shoot_animation_frames:
 			anim.play(anim_name + "_idle")
 		
 		if anim.frame == 3 and reload_effect != null:

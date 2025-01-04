@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dlj4u2fwgy5s5"]
+[gd_scene load_steps=23 format=3 uid="uid://dlj4u2fwgy5s5"]
 
 [ext_resource type="Script" path="res://weapons/scripts/shoot_gun.gd" id="1_ma6wc"]
 [ext_resource type="Texture2D" uid="uid://vepvjstar6fq" path="res://weapons/shotgun/sprites/idle/shotgun_idle1.png" id="2_wwpo0"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://21sd5mq0a4si" path="res://weapons/shotgun/sprites/idle/shotgun_idle4.png" id="5_e1t32"]
 [ext_resource type="Texture2D" uid="uid://c4th3a25kgt6c" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot4.png" id="5_kh2u0"]
 [ext_resource type="Texture2D" uid="uid://40r55idsqxie" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot5.png" id="6_n8vwy"]
-[ext_resource type="Texture2D" uid="uid://bteqprscuvl4j" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot6.png" id="7_jtl6o"]
 [ext_resource type="Texture2D" uid="uid://dp503umv6lyk4" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot7.png" id="8_mecit"]
 [ext_resource type="Texture2D" uid="uid://dp73o7c0nq4ub" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot8.png" id="9_rgf3s"]
 [ext_resource type="Texture2D" uid="uid://cfknn6338drqp" path="res://weapons/shotgun/sprites/shoot/shotgun_shoot9.png" id="10_qmlc1"]
@@ -59,9 +58,6 @@ animations = [{
 "texture": ExtResource("6_n8vwy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_jtl6o")
-}, {
-"duration": 1.0,
 "texture": ExtResource("8_mecit")
 }, {
 "duration": 1.0,
@@ -91,10 +87,11 @@ animations = [{
 transform = Transform3D(0.3, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.118146, 0)
 script = ExtResource("1_ma6wc")
 anim = NodePath("AnimatedSprite3D")
+shoot_animation_frames = 11
 shoot_effects = [NodePath("audio/shooting/shotgun_shoot_3")]
 reload_effect = NodePath("audio/reload/shotgun_reload")
 shoot_cooldown = 1.0
-shoot_range = 25.0
+shoot_range = 60.0
 anim_name = "shotgun"
 damage = 30.0
 
@@ -104,7 +101,7 @@ cast_shadow = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gu62l")
 animation = &"shotgun_shoot"
-frame_progress = 0.585786
+frame_progress = 0.55488
 
 [node name="audio" type="Node3D" parent="."]
 
@@ -127,4 +124,4 @@ stream = ExtResource("21_0p3q4")
 [node name="shotgun_reload" type="AudioStreamPlayer3D" parent="audio/reload"]
 transform = Transform3D(3.33333, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 stream = ExtResource("22_6uygx")
-max_db = -4.415
+max_db = -2.0
