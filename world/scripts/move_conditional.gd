@@ -1,69 +1,56 @@
 extends Node3D
 
-enum Condition
-{
-	enemies_killed,
-	collection
-}
-
 @export_group("conditions")
-@export var condition: Condition
-@export var condition_tag: int
-@export var has_met_condition: bool
-@export var return_condition: Condition
-@export var return_tag: int
-@export var has_met_return_condition: bool
+@export var conditions: Array[Condition]
+@export var conditions_completed: int
+@export var sequal_conditions: int
+@export var condition_amount: int
 
 @export_group("move direction")
 @export var move_to: Node3D
 @export var start_at: Node3D
 
-@export_group("kill condition")
-@export var kills_left: int
-
-
 func _ready():
+	for con in conditions:
+		condition_amount += 1
+		if con.run_after_last:
+			sequal_conditions += 1
+
 	SignalManager.update_tag.connect(update_tag)
 	SignalManager.return_tag.connect(collect_tags)
 	
 
 func _process(delta: float):
-		
-	if has_met_condition and !has_met_return_condition:
+	if conditions_completed >= condition_amount - sequal_conditions:
 		move(delta)
-	if has_met_return_condition:
+	
+	if conditions_completed >= condition_amount and sequal_conditions != 0:
 		reset(delta)
 
 func collect_tags(tag: int):
-	if tag == condition_tag and condition == Condition.enemies_killed:
-		kills_left += 1
-		print(name + ": has collected a kill tag")
-		
-	if tag == return_tag and return_condition == Condition.enemies_killed:
-		kills_left += 1
-		print(name + ": has collected a kill tag")
+	for con in conditions:
+		if con.tag == tag:
+			con.amount += 1
 
 func update_tag(tag: int):
-	if tag == condition_tag && condition == Condition.enemies_killed:
-		kills_left -= 1
-		print(name + ": enemy killed")
+	for con in conditions:
+		if con.condition == 1 and con.tag == tag:
+			con.has_been_completed = true
+			print("item needed for the door has been collected")
 
-		if kills_left == 0:
-			set_condition_met()
-			print(name + ": all enemies killed")
+		if con.tag == tag:
+			con.amount -= 1
+			if con.amount <= 0:
+				con.has_been_completed = true
 
-	if tag == condition_tag:
-		set_condition_met()
-		print(name + ": item " + str(tag) + " has been  collected")
+		check_conditions()
 
-func set_condition_met():
-	if !has_met_condition:
-		has_met_condition = true
-		condition_tag = return_tag
-		condition = return_condition
-	else:
-		has_met_condition = false
-		has_met_return_condition = true
+func check_conditions():
+	for con in conditions:
+		if con.has_been_completed:
+			conditions_completed += 1
+			conditions.remove_at(conditions.find(con))
+
 
 func move(delta):
 	var new_pos_y = lerp(position.y, move_to.position.y, delta)

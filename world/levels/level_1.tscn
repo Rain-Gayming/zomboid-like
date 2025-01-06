@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=32 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
+[ext_resource type="Script" path="res://world/scripts/condition.gd" id="2_smafe"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="3_3x4ra"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="4_gvw8e"]
 [ext_resource type="Script" path="res://player/player_movement.gd" id="4_shr8p"]
@@ -33,6 +34,30 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_pc0nj"]
+
+[sub_resource type="Resource" id="Resource_b5vso"]
+script = ExtResource("2_smafe")
+condition = 0
+tag = 1
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="Resource" id="Resource_tpw1h"]
+script = ExtResource("2_smafe")
+condition = 1
+tag = 2
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="Resource" id="Resource_0ecvj"]
+script = ExtResource("2_smafe")
+condition = 0
+tag = 3
+has_been_completed = false
+amount = 0
+run_after_last = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_i804w"]
 
@@ -171,16 +196,12 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
-condition_tag = 1
-return_tag = -885
+conditions = Array[ExtResource("2_smafe")]([SubResource("Resource_b5vso")])
 move_to = NodePath("../move_to")
-start_at = NodePath("../start_at")
+start_at = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/red_room/door"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
-
-[node name="start_at" type="Node3D" parent="environment/world/red_room/door"]
-transform = Transform3D(1, 2.71051e-20, 9.09495e-13, 6.50464e-17, 1, -8.52651e-14, 0, 7.10543e-15, 1, 0, 0.446347, 0)
 
 [node name="door2" type="Node3D" parent="environment/world/red_room"]
 transform = Transform3D(0.355565, -6.51324e-14, -2.30028e-06, -3.76161e-09, -12.0982, 3.22427e-06, -3.10845e-08, -1.4825e-06, -26.3121, 24.7515, 2.54149, 2.27383)
@@ -190,14 +211,12 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
-condition = 1
-condition_tag = 2
-return_tag = 3
+conditions = Array[ExtResource("2_smafe")]([SubResource("Resource_tpw1h"), SubResource("Resource_0ecvj")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../start_at")
 
 [node name="move_to" type="Node3D" parent="environment/world/red_room/door2"]
-transform = Transform3D(1, 5.42101e-20, 9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.01399, 0)
+transform = Transform3D(1, 5.42101e-20, -9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.45207, 0)
 
 [node name="start_at" type="Node3D" parent="environment/world/red_room/door2"]
 transform = Transform3D(1, 5.42101e-20, 9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, -0.362733, 0)
@@ -336,9 +355,6 @@ material_override = ExtResource("6_q3dl2")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
-condition = 1
-condition_tag = 4
-return_tag = -30
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/second_room/door"]
@@ -353,9 +369,6 @@ material_override = ExtResource("7_vuqg0")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
-condition = 1
-condition_tag = 2
-return_tag = -30
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/second_room/door2"]
@@ -508,9 +521,6 @@ transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
-condition = 1
-condition_tag = 3
-return_tag = -30
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/final_room/door"]
@@ -554,7 +564,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="player" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.3487, 3.2649, 158.033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.3487, -0.226136, 158.033)
 
 [node name="player" type="CharacterBody3D" parent="player"]
 script = ExtResource("4_shr8p")
@@ -601,31 +611,151 @@ shape = SubResource("BoxShape3D_wnwvj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
 current = true
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.0552, 1.35682, 174.027)
+[node name="Enemy_Tag_3_2" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 136.355, 1.35682, 150.327)
 script = ExtResource("9_iwuxa")
 current_health = 30.0
-tag = 1
+tag = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_2"]
 shape = SubResource("CapsuleShape3D_uw577")
 
-[node name="HumanoidMesh" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
 material_override = SubResource("ShaderMaterial_m1fds")
 mesh = ExtResource("5_lbulh")
 skeleton = NodePath("../..")
 
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 130.255, 1.35682, 157.727)
+[node name="Enemy_Tag_3_3" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 122.555, 1.35682, 147.127)
 script = ExtResource("9_iwuxa")
 current_health = 30.0
 tag = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_3"]
 shape = SubResource("CapsuleShape3D_uw577")
 
-[node name="HumanoidMesh" type="MeshInstance3D" parent="CharacterBody3D2"]
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_3_4" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 100.155, 1.35682, 146.327)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_4"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_3_5" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 130.392, 1.35682, 176.812)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_5"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_3_6" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 113.592, 1.35682, 178.412)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_6"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_1_4" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 47.7916, 1.35682, 178.512)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_4"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_1_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_1_1" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 81.2916, 1.35682, 148.912)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_1"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_1_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_1_2" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 40.1916, 1.35682, 146.912)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_2"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_1_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_1_3" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 59.8916, 1.35682, 160.712)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_3"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_1_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("5_lbulh")
+skeleton = NodePath("../..")
+
+[node name="Enemy_Tag_1_5" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.0552, 1.35682, 174.027)
+script = ExtResource("9_iwuxa")
+current_health = 30.0
+tag = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_5"]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_1_5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
 material_override = SubResource("ShaderMaterial_m1fds")
 mesh = ExtResource("5_lbulh")
