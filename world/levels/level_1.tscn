@@ -24,12 +24,12 @@ sky_energy_multiplier = 0.0
 ground_bottom_color = Color(0.4383, 0.449628, 0.449629, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_i86jo"]
+[sub_resource type="Sky" id="Sky_drjo5"]
 sky_material = SubResource("ProceduralSkyMaterial_5tnbj")
 
 [sub_resource type="Environment" id="Environment_jm735"]
 background_mode = 2
-sky = SubResource("Sky_i86jo")
+sky = SubResource("Sky_drjo5")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -232,7 +232,7 @@ move_to = NodePath("../move_to")
 start_at = NodePath("../start_at")
 
 [node name="move_to" type="Node3D" parent="environment/world/red_room/door2"]
-transform = Transform3D(1, 5.42101e-20, -9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.45207, 0)
+transform = Transform3D(1, 5.42101e-20, -1.81899e-12, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.28838, 0)
 
 [node name="start_at" type="Node3D" parent="environment/world/red_room/door2"]
 transform = Transform3D(1, 5.42101e-20, 4.54747e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, -1.29182, 0)
