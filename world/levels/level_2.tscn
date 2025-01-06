@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://clxgh4dnwlwnt"]
+[gd_scene load_steps=34 format=3 uid="uid://clxgh4dnwlwnt"]
 
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_uysxu"]
 [ext_resource type="Texture2D" uid="uid://bo75dfxkwjfq0" path="res://world/textures/floor_metal_1.png" id="2_46x1v"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="7_qwa0t"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="7_rxlop"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="8_pl3bb"]
+[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="15_h7l5u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jl63"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -288,7 +289,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block35" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-1, 0, 1.88162e-06, 0, 10.9, 0, -1.50996e-07, 0, -12.4614, -110.5, 5.275, 123.4)
+transform = Transform3D(-1, 0, 1.88162e-06, 0, 10.9, 0, -1.50996e-07, 0, -12.4614, -107, 5.275, 123.4)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -446,7 +447,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 transform = Transform3D(-0.355565, -1.82678e-06, 2.70783e-06, 5.36888e-08, -12.0982, 2.57472e-06, 6.2169e-08, 2.01133e-06, 15.487, -98.5, 6.6, 69.1)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door3" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(0.0519466, 7.26466e-06, -7.5838e-06, 5.28016e-07, -0.714704, 4.36614e-08, -7.88101e-07, -6.25356e-08, -0.499876, 0, 0.11572, 0.0387421)
+transform = Transform3D(3.582, 7.26466e-06, -7.5838e-06, 3.64095e-05, -0.714704, 4.36613e-08, -5.43438e-05, -6.25356e-08, -0.499876, 0, 0.11572, 0.0387421)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
 material = SubResource("StandardMaterial3D_l8k8v")
@@ -462,7 +463,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 transform = Transform3D(7.77112e-08, 2.01133e-06, 15.487, 5.36888e-08, -12.0982, 2.57472e-06, 0.355565, 1.82678e-06, -3.38479e-06, -103.4, 6, 93.4)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door4" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(0.0519466, 8.54773e-06, -7.5838e-06, 5.28015e-07, -0.840934, 4.36614e-08, -7.88101e-07, -7.35806e-08, -0.499876, 0.776306, 0.115719, 0.0387421)
+transform = Transform3D(3.582, 8.54774e-06, -7.5838e-06, 3.64095e-05, -0.840934, 4.36613e-08, -5.43438e-05, -7.35806e-08, -0.499876, 0.776306, 0.115719, 0.0387421)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
 material = SubResource("StandardMaterial3D_ijkkt")
@@ -561,3 +562,57 @@ offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_5f00d")
+
+[node name="Enemy_Tag_3_2" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -10.8082, 2.45, 43.1419)
+tag = 1
+
+[node name="Enemy_Tag_3_3" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -23.2082, 2.45, 58.3419)
+tag = 1
+
+[node name="Enemy_Tag_3_4" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -44.9082, 2.45, 52.2419)
+tag = 1
+
+[node name="Enemy_Tag_3_5" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -23.1082, 2.45, 31.1419)
+tag = 1
+
+[node name="Enemy_Tag_3_6" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -47.2082, 2.45, 41.4419)
+tag = 1
+
+[node name="Enemy_Tag_3_7" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -12.8082, 2.45, 61.1419)
+tag = 1
+
+[node name="test_enemy" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -127.197, 2.15, 65.7739)
+
+[node name="test_enemy2" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -125.297, 2.15, 68.4739)
+
+[node name="test_enemy3" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -125.797, 2.15, 70.9739)
+
+[node name="test_enemy6" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -97.5969, 2.15, 119.174)
+
+[node name="test_enemy7" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -95.1969, 2.15, 122.174)
+
+[node name="test_enemy8" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -98.0969, 2.15, 126.074)
+
+[node name="test_enemy9" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.020512, -0.151537, -0.988239, -0.0545531, 0.987144, -0.150237, 0.9983, 0.0508299, -0.0285152, -71.1969, 2.15, 118.574)
+
+[node name="test_enemy10" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.020512, -0.151537, -0.988239, -0.0545531, 0.987144, -0.150237, 0.9983, 0.0508299, -0.0285152, -74.4969, 2.15, 124.974)
+
+[node name="test_enemy4" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -128.297, 2.15, 72.6739)
+
+[node name="test_enemy5" parent="." instance=ExtResource("15_h7l5u")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -100.597, 2.15, 75.2739)

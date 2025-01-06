@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyieebvqet2es"]
+
+[ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="1_4y00u"]
+[ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_k0ebf"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_0tyu4"]
+[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="4_ce1jg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uw577"]
+radius = 0.80583
+height = 3.64708
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1fds"]
+render_priority = 0
+next_pass = ExtResource("2_k0ebf")
+shader = ExtResource("3_0tyu4")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(1, 1, 1, 1)
+
+[node name="test_enemy" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 1.6, 0)
+script = ExtResource("1_4y00u")
+current_health = 30.0
+tag = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_uw577")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("4_ce1jg")
+skeleton = NodePath("../..")

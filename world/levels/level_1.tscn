@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=35 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_k5x7d"]
 [ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="9_iwuxa"]
 [ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="10_tpt6b"]
+[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="15_4roaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5tnbj"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -37,8 +38,8 @@ glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_b5vso"]
 script = ExtResource("2_smafe")
-condition = 0
-tag = 1
+condition = 1
+tag = 2
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -629,20 +630,8 @@ shape = SubResource("BoxShape3D_wnwvj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
 current = true
 
-[node name="Enemy_Tag_3_2" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 136.355, 1.35682, 150.327)
-script = ExtResource("9_iwuxa")
-current_health = 30.0
-tag = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_2"]
-shape = SubResource("CapsuleShape3D_uw577")
-
-[node name="HumanoidMesh" type="MeshInstance3D" parent="Enemy_Tag_3_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
-material_override = SubResource("ShaderMaterial_m1fds")
-mesh = ExtResource("5_lbulh")
-skeleton = NodePath("../..")
+[node name="Enemy_Tag_3_2" parent="." instance=ExtResource("15_4roaq")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 73.7, 0, 179)
 
 [node name="Enemy_Tag_3_3" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 122.555, 1.35682, 147.127)
