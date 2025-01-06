@@ -6,6 +6,7 @@ enum Condition
 	collection
 }
 
+@export_group("conditions")
 @export var condition: Condition
 @export var condition_tag: int
 @export var has_met_condition: bool
@@ -24,6 +25,7 @@ enum Condition
 func _ready():
 	SignalManager.update_tag.connect(update_tag)
 	SignalManager.return_tag.connect(collect_tags)
+	
 
 func _process(delta: float):
 		

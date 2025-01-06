@@ -1,13 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=28 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
-[ext_resource type="Material" uid="uid://dqtp0nlhoos05" path="res://world/red.tres" id="2_6aogp"]
-[ext_resource type="Script" path="res://world/scripts/pickup.gd" id="3_fqfcw"]
+[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
+[ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="3_3x4ra"]
+[ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="4_gvw8e"]
 [ext_resource type="Script" path="res://player/player_movement.gd" id="4_shr8p"]
+[ext_resource type="Texture2D" uid="uid://bo75dfxkwjfq0" path="res://world/textures/floor_metal_1.png" id="4_y3m2r"]
 [ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="5_lbulh"]
+[ext_resource type="Material" uid="uid://erb7qvubcbe6" path="res://world/textures/door_metal_1_blue_skull.tres" id="6_q3dl2"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="6_xnkp2"]
 [ext_resource type="Script" path="res://player/camera.gd" id="7_tse4o"]
+[ext_resource type="Material" uid="uid://cylqr05ywogtv" path="res://world/textures/door_metal_1_red_skull.tres" id="7_vuqg0"]
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="8_grdwf"]
+[ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_k5x7d"]
 [ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="9_iwuxa"]
 [ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="10_tpt6b"]
 
@@ -31,8 +36,10 @@ glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_i804w"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_afhme"]
-size = Vector3(10.2803, 1, 13.2734)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74bby"]
+albedo_texture = ExtResource("4_y3m2r")
+uv1_scale = Vector3(88, 88, 88)
+uv1_triplanar_sharpness = 0.148651
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3n1d"]
 render_priority = 0
@@ -68,7 +75,7 @@ shader_parameter/shadow_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vxamo"]
 
-[node name="Node3D" type="Node3D"]
+[node name="level 1" type="Node3D"]
 
 [node name="environment" type="Node3D" parent="."]
 
@@ -83,43 +90,28 @@ environment = SubResource("Environment_jm735")
 
 [node name="starting_coridoor" type="Node3D" parent="environment/world"]
 
-[node name="block" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-8.9407e-08, -12.0982, 0, 1, -9.53674e-07, 0, 0, 0, 49.7251, -0.999995, -0.458506, 19.1661)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block6" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1.00263, -0.785045, 71.0002)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
 [node name="block11" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.73603, 71)
+transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.326, 71)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block2" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-8.9407e-08, -12.0982, 0, 1, -9.53674e-07, 0, 0, 0, 49.7251, -0.999996, 8.54149, 19.1661)
+transform = Transform3D(-4.37114e-08, -14.268, 0, 1, -6.23674e-07, 0, 0, 0, 49.725, -1, 8.326, 19.166)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block5" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-1.05792e-08, -12.0982, -1.37271e-06, -4.37114e-08, -9.53674e-07, 17.4141, -1, 0, -7.61194e-07, -0.999995, 0.581535, -5.8339)
+transform = Transform3D(-4.37114e-08, -12.823, -4.33792e-07, 0, -5.60511e-07, 9.924, -1, 5.60511e-07, 1.89616e-14, -1, 3.957, -3.424)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block3" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-1, 1.4825e-06, 0, -1.33118e-07, -12.0982, 0, 0, 0, 49.7251, 5, 2.54149, 19.1661)
+transform = Transform3D(-1, 1.4825e-06, 0, -1.33118e-07, -12.0982, 0, 0, 0, 49.7251, 6.09, 2.541, 19.166)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block4" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-1, 1.4825e-06, 0, -1.33118e-07, -12.0982, 0, 0, 0, 49.7251, -7, 2.54149, 19.1661)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block14" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(-8.9407e-08, -12.0982, 0, 1, -9.53674e-07, 0, 0, 0, 39.1989, -0.732888, -0.761808, 117.096)
+transform = Transform3D(-1, 1.4825e-06, 0, -1.33118e-07, -12.0982, 0, 0, 0, 49.7251, -7.61, 2.541, 19.166)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
@@ -159,17 +151,17 @@ use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block12" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 21.4812, -1.05792e-08, -12.0982, 2.63229e-06, 1, 0, -9.38975e-07, -17.8625, 2.54149, 97.8123)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 23.4734, -1.05792e-08, -12.0982, 2.87641e-06, 1, 0, -1.02606e-06, -18.0032, 2.54149, 97.8123)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block13" type="CSGMesh3D" parent="environment/world/starting_coridoor"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 21.4812, -1.05792e-08, -12.0982, 2.63229e-06, 1, 0, -9.38975e-07, 16.3244, 2.54149, 97.8123)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 21.4812, -1.05792e-08, -12.0982, 2.63229e-06, 1, 0, -9.38975e-07, 15.7164, 2.54149, 97.8123)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="red_room" type="Node3D" parent="environment/world"]
-transform = Transform3D(0.655314, 0, 0, 0, 1, 0, 0, 0, 0.686949, 94.624, 0.015, 160.8)
+transform = Transform3D(0.655314, 0, 0, 0, 1, 0, 0, 0, 0.686949, 76.658, 14.813, 160.8)
 
 [node name="door" type="Node3D" parent="environment/world/red_room"]
 transform = Transform3D(0.355565, -6.51324e-14, -2.30028e-06, -3.76161e-09, -12.0982, 3.22427e-06, -3.10845e-08, -1.4825e-06, -26.3121, 24.7515, -9.65851, 2.27383)
@@ -215,82 +207,120 @@ transform = Transform3D(2.59, 0, 0, 0, 5.134, 0, 0, 0, 2.59, 64.6, -15.6, 3.6000
 use_collision = true
 mesh = SubResource("BoxMesh_i804w")
 
-[node name="red_skull" type="CSGMesh3D" parent="environment/world/red_room"]
-transform = Transform3D(1.26, 0, 0, 0, 1.26, 0, 0, 0, 1.26, 64.6, -12, 3.60001)
-material_override = ExtResource("2_6aogp")
-mesh = SubResource("BoxMesh_i804w")
-script = ExtResource("3_fqfcw")
+[node name="pickup_base" parent="environment/world/red_room/pillar" instance=ExtResource("2_km60l")]
+transform = Transform3D(0.589, 0, 0, 0, 0.195, 0, 0, 0, 0.589, 0, 0.708434, 0)
+sprite = ExtResource("3_3x4ra")
 tag = 2
-
-[node name="collision_area" type="Area3D" parent="environment/world/red_room/red_skull"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="environment/world/red_room/red_skull/collision_area"]
-shape = SubResource("BoxShape3D_afhme")
 
 [node name="blocks" type="Node3D" parent="environment/world/red_room"]
 
 [node name="block34" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 178.724, -1.05792e-08, -12.0982, 2.19007e-05, 1, 1.70935e-13, -7.81227e-06, 6.38956, -9.65851, -60.1922)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 178.724, -1.05792e-08, -12.0982, 2.19007e-05, 1, 1.70935e-13, -7.81227e-06, 6.38956, -9.65851, -33.4071)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block29" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(-4.80825e-08, -177.128, 0, 1.1, -7.74251e-06, 0, 0, 0, 127.86, 7.89738, -15.585, 2.80357)
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -32.4992, -15.585, 2.80356)
+material_override = ExtResource("4_gvw8e")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block39" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(-4.80825e-08, -177.128, 0, 1.1, -7.74251e-06, 0, 0, 0, 127.86, 7.89738, -3.78504, 2.80357)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block28" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(0.649452, 3.26159e-06, 28.2345, 1.12488, -7.22649e-07, -16.3012, -4.61104e-08, 23.8019, -3.89466e-06, -90.1649, -8.96184, 2.20322)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block40" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(0.554845, 3.28969e-06, 25.1094, 1.06439, -5.8153e-07, -13.089, -4.2611e-08, 23.8019, -3.38262e-06, -92.7458, 2.63538, 2.20322)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block30" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -4.88267e-06, -1.05792e-08, -12.0982, 6.84396e-06, -8.74228e-08, -1.4825e-06, -55.8512, -80.0486, -9.65851, 41.9078)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
 
 [node name="block31" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -4.88267e-06, -1.05792e-08, -12.0982, 6.84396e-06, -8.74228e-08, -1.4825e-06, -55.8512, -80.0486, -9.65851, -37.4922)
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -120.469, -15.585, 2.804)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block44" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -120.469, -15.585, -85.165)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block45" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -120.469, -15.585, -173.165)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block46" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -120.469, -15.585, -261.161)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block42" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -120.469, -15.585, 90.789)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block43" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -120.469, -15.585, 178.79)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block40" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, -208.465, -15.585, 2.804)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block41" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -296.469, -15.585, 2.804)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block30" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88, 55.493, -15.585, 2.804)
+material_override = ExtResource("4_gvw8e")
+use_collision = true
+mesh = SubResource("BoxMesh_pc0nj")
+material = SubResource("StandardMaterial3D_74bby")
+
+[node name="block39" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
+transform = Transform3D(-4.80825e-08, -177.128, 0, 1.1, -7.74251e-06, 0, 0, 0, 84.7068, 7.897, -6.52, 2.804)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block32" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -4.88267e-06, -1.05792e-08, -12.0982, 6.84396e-06, -8.74228e-08, -1.4825e-06, -55.8512, 24.7514, -9.65851, 41.9078)
+transform = Transform3D(1.0059, -6.55165e-14, -3.0274e-06, -1.06416e-08, -12.1695, 4.24346e-06, -8.79384e-08, -1.49124e-06, -34.6294, 24.6123, -9.65851, 26.8863)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block33" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -4.88267e-06, -1.05792e-08, -12.0982, 6.84396e-06, -8.74228e-08, -1.4825e-06, -55.8512, 24.7514, -9.65851, -37.4922)
+transform = Transform3D(1.0059, -6.55165e-14, -3.0274e-06, -1.06416e-08, -12.1695, 4.24346e-06, -8.79384e-08, -1.49124e-06, -34.6294, 24.6123, -9.65851, -22.3441)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block35" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 178.724, -1.05792e-08, -12.0982, 2.19007e-05, 1, 1.70935e-13, -7.81227e-06, 6.38956, -9.65851, 65.4078)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 178.724, -1.05792e-08, -12.0982, 2.19007e-05, 1, 1.70935e-13, -7.81227e-06, 6.38956, -9.65851, 42.127)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block37" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 81.8268, -1.05792e-08, -12.0982, 1.0027e-05, 1, 1.70935e-13, -3.57676e-06, 65.5896, -9.65851, 32.1078)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 71.2506, -1.05792e-08, -12.0982, 8.731e-06, 1, 1.70935e-13, -3.11446e-06, 60.5538, -9.65851, 32.1078)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block38" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(4.37114e-08, 1.4825e-06, 81.8268, -1.05792e-08, -12.0982, 1.0027e-05, 1, 1.70935e-13, -3.57676e-06, 65.5896, -9.65851, -26.9922)
+transform = Transform3D(4.37114e-08, 1.4825e-06, 71.2506, -1.05792e-08, -12.0982, 8.731e-06, 1, 1.70935e-13, -3.11446e-06, 60.5538, -9.65851, -26.9922)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block36" type="CSGMesh3D" parent="environment/world/red_room/blocks"]
-transform = Transform3D(-1, -5.27365e-14, 1.40221e-12, -1.05792e-08, -12.0982, 1.68826e-05, 0, 1.4825e-06, 137.773, 95.4896, -9.65851, 2.70781)
+transform = Transform3D(-1.0059, -5.30475e-14, 8.69412e-13, -1.06416e-08, -12.1695, 1.04677e-05, 0, 1.49124e-06, 85.4234, 95.7677, -9.65851, 2.58115)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
@@ -298,30 +328,43 @@ mesh = SubResource("BoxMesh_pc0nj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 161.8)
 
 [node name="door" type="Node3D" parent="environment/world/second_room"]
-transform = Transform3D(-4.66267e-08, -1.4825e-06, -26.3121, -3.76161e-09, -12.0982, 3.22427e-06, -0.355565, 1.1985e-13, 3.45042e-06, -1.21857, 4.52949, 28.2738)
+transform = Transform3D(-7.54979e-08, -1.22539e-07, -1, 8.74228e-08, -1, 1.22539e-07, -1, -8.74228e-08, 7.54979e-08, -1.21857, 4.52949, 28.2738)
 
 [node name="door4" type="CSGMesh3D" parent="environment/world/second_room/door" node_paths=PackedStringArray("move_to")]
-transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55271e-15, 1, 0, 0, 0)
+transform = Transform3D(0.495, -5.68434e-14, 2.27374e-13, 3.55271e-15, -8.4, 1.1309e-06, -1.42109e-14, -7.34351e-07, -12.936, 0, 1, -0.6)
+material_override = ExtResource("6_q3dl2")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
 condition = 1
-condition_tag = 3
+condition_tag = 4
 return_tag = -30
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/second_room/door"]
 transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55271e-15, 1, 0, -1.53742, 8.56817e-08)
 
-[node name="blocks" type="Node3D" parent="environment/world/second_room"]
+[node name="door2" type="Node3D" parent="environment/world/second_room"]
+transform = Transform3D(1, 8.74228e-08, -3.17865e-08, 8.74228e-08, -1, 1.22539e-07, -3.17865e-08, -1.22539e-07, -1, -28.3186, 4.52949, -1.3262)
 
-[node name="block18" type="CSGMesh3D" parent="environment/world/second_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1.00263, -0.785045, 1.60358)
+[node name="door4" type="CSGMesh3D" parent="environment/world/second_room/door2" node_paths=PackedStringArray("move_to")]
+transform = Transform3D(0.495, -5.68434e-14, 2.27374e-13, 3.55271e-15, -8.4, 1.1309e-06, -1.42109e-14, -7.34351e-07, -12.936, 0, 1, -0.6)
+material_override = ExtResource("7_vuqg0")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
+script = ExtResource("1_xfwyn")
+condition = 1
+condition_tag = 2
+return_tag = -30
+move_to = NodePath("../move_to")
+
+[node name="move_to" type="Node3D" parent="environment/world/second_room/door2"]
+transform = Transform3D(1, -3.21034e-15, 0, -3.21034e-15, 1, -2.84217e-14, 0, 0, 1, 1.90735e-06, -12.9374, 0)
+
+[node name="blocks" type="Node3D" parent="environment/world/second_room"]
 
 [node name="block19" type="CSGMesh3D" parent="environment/world/second_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.73603, 1.60338)
+transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.326, 1.603)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
@@ -346,12 +389,12 @@ use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block43" type="CSGMesh3D" parent="environment/world/second_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -1.34106e-06, -1.05792e-08, -12.0982, 1.87974e-06, -8.74228e-08, -1.4825e-06, -15.3399, -28.1486, 3.54149, 20.5656)
+transform = Transform3D(1, -6.51324e-14, -2.1457e-06, -1.05792e-08, -12.0982, 3.00758e-06, -8.74228e-08, -1.4825e-06, -24.5438, -28.1486, 3.54149, 17.9656)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block44" type="CSGMesh3D" parent="environment/world/second_room/blocks"]
-transform = Transform3D(1, -6.51324e-14, -1.34106e-06, -1.05792e-08, -12.0982, 1.87974e-06, -8.74228e-08, -1.4825e-06, -15.3399, -28.1486, 3.54149, -18.3344)
+transform = Transform3D(1, -6.51324e-14, -2.1457e-06, -1.05792e-08, -12.0982, 3.00758e-06, -8.74228e-08, -1.4825e-06, -24.5438, -28.1486, 3.54149, -19.0344)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
@@ -359,11 +402,6 @@ mesh = SubResource("BoxMesh_pc0nj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.3, 0, 160.9)
 
 [node name="blocks" type="Node3D" parent="environment/world/blue_room"]
-
-[node name="block26" type="CSGMesh3D" parent="environment/world/blue_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 24.8051, 22.8974, -0.785045, 1.60358)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block45" type="CSGMesh3D" parent="environment/world/blue_room/blocks"]
 transform = Transform3D(-4.80825e-08, -53.9286, 0, -4.80825e-08, 2.94633e-13, -11.0768, 1.1, -2.3573e-06, -4.8418e-07, 22.2335, 3.71495, -10.6964)
@@ -400,35 +438,30 @@ transform = Transform3D(1.44247e-07, 26.9643, -4.23284e-14, -4.80825e-08, 1.4731
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
-[node name="block27" type="CSGMesh3D" parent="environment/world/blue_room/blocks"]
-transform = Transform3D(-1.80623e-15, 2.40413e-06, -27.5, 1.1, -2.40413e-06, 0, -4.80825e-08, -55, -1.20206e-06, -18.2906, -0.785043, 2.50359)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
 [node name="block52" type="CSGMesh3D" parent="environment/world/blue_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 24.8051, 22.8974, 8.81496, 1.60358)
+transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 24.8051, 22.8974, 8.326, 1.60358)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block53" type="CSGMesh3D" parent="environment/world/blue_room/blocks"]
-transform = Transform3D(-1.80623e-15, 2.40413e-06, -27.5, 1.1, -2.40413e-06, 0, -4.80825e-08, -55, -1.20206e-06, -18.2906, 8.81496, 2.50359)
+transform = Transform3D(-1.80623e-15, 2.40413e-06, -27.5, 1.1, -2.40413e-06, 0, -4.80825e-08, -55, -1.20206e-06, -18.2906, 8.326, 2.50359)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
+
+[node name="pillar" type="CSGMesh3D" parent="environment/world/blue_room"]
+transform = Transform3D(1.69726, 0, 0, 0, 5.134, 0, 0, 0, 1.7792, -26.4147, -1.355, 2.37303)
+use_collision = true
+mesh = SubResource("BoxMesh_i804w")
+
+[node name="pickup_base" parent="environment/world/blue_room/pillar" instance=ExtResource("2_km60l")]
+transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.656322, 0)
+sprite = ExtResource("8_k5x7d")
+tag = 4
 
 [node name="final_coridoor" type="Node3D" parent="environment/world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 289.4)
 
 [node name="blocks" type="Node3D" parent="environment/world/final_coridoor"]
-
-[node name="block25" type="CSGMesh3D" parent="environment/world/final_coridoor/blocks"]
-transform = Transform3D(-4.80825e-08, -14.0591, 0, 1.1, -6.14546e-07, 0, 0, 0, 55, -0.10263, -0.785045, -15.9964)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
-[node name="block28" type="CSGMesh3D" parent="environment/world/final_coridoor/blocks"]
-transform = Transform3D(-4.80825e-08, -20.59, 0, 1.1, -9.00017e-07, 0, 0, 0, 20.59, -17.3026, -0.785045, 0.803589)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="block39" type="CSGMesh3D" parent="environment/world/final_coridoor/blocks"]
 transform = Transform3D(-4.80825e-08, -14.0591, 0, 1.1, -6.14546e-07, 0, 0, 0, 55, -0.10263, 8.01496, -15.9964)
@@ -485,13 +518,8 @@ transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55
 
 [node name="blocks" type="Node3D" parent="environment/world/final_room"]
 
-[node name="block24" type="CSGMesh3D" parent="environment/world/final_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1.00263, -0.785045, 218.304)
-use_collision = true
-mesh = SubResource("BoxMesh_pc0nj")
-
 [node name="block33" type="CSGMesh3D" parent="environment/world/final_room/blocks"]
-transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.73603, 218.603)
+transform = Transform3D(-4.80825e-08, -55, 0, 1.1, -2.40413e-06, 0, 0, 0, 55, -1, 8.326, 218.603)
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
@@ -526,9 +554,9 @@ use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
 [node name="player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.3487, 3.2649, 158.033)
 
 [node name="player" type="CharacterBody3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 101.4, -15.3, 157.9)
 script = ExtResource("4_shr8p")
 current_speed = 14.0
 walk_speed = 6.0
@@ -569,8 +597,12 @@ target_position = Vector3(0, -11.405, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, 0)
 shape = SubResource("BoxShape3D_wnwvj")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="player/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+current = true
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 101.587, -13.327, 192.509)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.0552, 1.35682, 174.027)
 script = ExtResource("9_iwuxa")
 current_health = 30.0
 tag = 1
@@ -585,7 +617,7 @@ mesh = ExtResource("5_lbulh")
 skeleton = NodePath("../..")
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 172.987, -13.327, 152.609)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 130.255, 1.35682, 157.727)
 script = ExtResource("9_iwuxa")
 current_health = 30.0
 tag = 3
@@ -619,5 +651,3 @@ offset_bottom = 2.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_vxamo")
-
-[connection signal="area_entered" from="environment/world/red_room/red_skull/collision_area" to="environment/world/red_room/red_skull" method="_on_collision_area_area_entered"]

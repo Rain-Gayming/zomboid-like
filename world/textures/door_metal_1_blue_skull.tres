@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://erb7qvubcbe6"]
+
+[ext_resource type="Texture2D" uid="uid://c573gc0i5pyut" path="res://world/textures/door_metal_1_blue_skull.png" id="1_n2mf0"]
+
+[resource]
+albedo_texture = ExtResource("1_n2mf0")
+uv1_scale = Vector3(2.615, 2.08, 2.08)
+uv1_offset = Vector3(-0.795, 0, 0)
+texture_filter = 0
