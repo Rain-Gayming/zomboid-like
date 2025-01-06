@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=34 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
@@ -65,6 +65,22 @@ run_after_last = true
 albedo_texture = ExtResource("4_y3m2r")
 uv1_scale = Vector3(88, 88, 88)
 uv1_triplanar_sharpness = 0.148651
+
+[sub_resource type="Resource" id="Resource_a7tsa"]
+script = ExtResource("2_smafe")
+condition = 1
+tag = 4
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="Resource" id="Resource_ry78f"]
+script = ExtResource("2_smafe")
+condition = 1
+tag = 2
+has_been_completed = false
+amount = 0
+run_after_last = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c3n1d"]
 render_priority = 0
@@ -219,7 +235,7 @@ start_at = NodePath("../start_at")
 transform = Transform3D(1, 5.42101e-20, -9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, 1.45207, 0)
 
 [node name="start_at" type="Node3D" parent="environment/world/red_room/door2"]
-transform = Transform3D(1, 5.42101e-20, 9.09495e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, -0.362733, 0)
+transform = Transform3D(1, 5.42101e-20, 4.54747e-13, 1.48313e-16, 1, -1.7053e-13, 0, 1.06581e-14, 1, 0, -1.29182, 0)
 
 [node name="pillar" type="CSGMesh3D" parent="environment/world/red_room"]
 transform = Transform3D(2.59, 0, 0, 0, 5.134, 0, 0, 0, 2.59, 64.6, -15.6, 3.60001)
@@ -355,10 +371,11 @@ material_override = ExtResource("6_q3dl2")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
+conditions = Array[ExtResource("2_smafe")]([SubResource("Resource_a7tsa")])
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/second_room/door"]
-transform = Transform3D(1, 0, 0, 2.77556e-17, 1, -2.54045e-14, 1.11022e-16, 3.55271e-15, 1, 0, -1.53742, 8.56817e-08)
+transform = Transform3D(1, 0, 0, 0, 1, -3.50219e-14, 0, -6.60024e-15, 1, 0, -15.1374, 1.66893e-06)
 
 [node name="door2" type="Node3D" parent="environment/world/second_room"]
 transform = Transform3D(1, 8.74228e-08, -3.17865e-08, 8.74228e-08, -1, 1.22539e-07, -3.17865e-08, -1.22539e-07, -1, -28.3186, 4.52949, -1.3262)
@@ -369,6 +386,7 @@ material_override = ExtResource("7_vuqg0")
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 script = ExtResource("1_xfwyn")
+conditions = Array[ExtResource("2_smafe")]([SubResource("Resource_ry78f")])
 move_to = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/second_room/door2"]
