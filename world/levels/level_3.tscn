@@ -84,7 +84,7 @@ texture_filter = 0
 [sub_resource type="Resource" id="Resource_axxbh"]
 script = ExtResource("4_vhe78")
 condition = 0
-tag = 1
+tag = 4
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -135,45 +135,92 @@ sky_mode = 2
 [node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = SubResource("Environment_n2gx2")
 
-[node name="test_enemy" parent="environment" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.7845, 2.15, -4.91449)
-tag = 1
-
-[node name="test_enemy4" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_1" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.4845, 2.15, -40.0145)
 tag = 0
 
-[node name="test_enemy5" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_2" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(2.08616e-07, 2.28128e-15, -1, -7.10543e-15, 1, 1.42109e-14, 0.999999, -3.95129e-15, 2.38419e-07, 25.4845, 2.15, -37.9145)
 tag = 0
 
-[node name="test_enemy8" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_3" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(-0.999999, 3.95129e-15, -2.38419e-07, -7.10543e-15, 1, 1.42109e-14, 1.78814e-07, 2.28128e-15, -0.999999, 21.2845, 2.15, -35.8145)
 tag = 0
 
-[node name="test_enemy9" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_4" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 21.2845, 2.15, -38.0145)
 tag = 0
 
-[node name="test_enemy10" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_5" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 21.2845, 2.15, -39.8145)
 tag = 0
 
-[node name="test_enemy11" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_6" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 13.9845, 2.15, -24.6145)
 tag = 0
 
-[node name="test_enemy7" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_0_7" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(-0.999999, 3.95129e-15, -2.38419e-07, -7.10543e-15, 1, 1.42109e-14, 1.78814e-07, 2.28128e-15, -0.999999, 25.4845, 2.15, -35.8145)
 tag = 0
 
-[node name="test_enemy2" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_1_1" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.7845, 2.15, -4.91449)
+tag = 1
+
+[node name="enemy_tag_1_2" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 1.42109e-14, -0.866025, -1.42109e-14, 1, 2.84217e-14, 0.866025, 2.54287e-15, 0.5, 27.0845, 2.15, 5.88551)
 tag = 1
 
-[node name="test_enemy3" parent="environment" instance=ExtResource("1_1ggj3")]
+[node name="enemy_tag_1_3" parent="environment" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.866025, 2.54287e-15, 0.5, -2.84217e-14, 1, 5.68434e-14, -0.5, -1.42109e-14, 0.866025, 9.58452, 2.15, -7.11449)
 tag = 1
+
+[node name="enemy_tag_4_1" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 41.5719, 2.15, 18.7322)
+tag = 4
+
+[node name="enemy_tag_4_2" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 41.1819, 2.15, 14.8369)
+tag = 4
+
+[node name="enemy_tag_4_3" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 55.7139, 2.15, 18.1813)
+tag = 4
+
+[node name="enemy_tag_4_4" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 65.4055, 2.15, 12.5815)
+tag = 4
+
+[node name="enemy_tag_4_5" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 64.658, 2.15, -0.149266)
+tag = 4
+
+[node name="enemy_tag_4_6" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 67.456, 2.15, 4.72128)
+
+[node name="enemy_tag_0_8" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 48.2882)
+tag = 0
+
+[node name="enemy_tag_0_9" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 51.5882)
+tag = 0
+
+[node name="enemy_tag_0_10" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 54.9882)
+tag = 0
+
+[node name="enemy_tag_0_11" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 47.4383)
+tag = 0
+
+[node name="enemy_tag_0_12" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 51.6383)
+tag = 0
+
+[node name="enemy_tag_0_13" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 56.0383)
+tag = 0
 
 [node name="world" type="Node3D" parent="environment"]
 
@@ -222,7 +269,7 @@ mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
 [node name="roof" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 8.4, 0.5)
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -4.80825e-08, 9.5, 0.5)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
@@ -758,24 +805,6 @@ transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 3.8424, 41, 5.275, -28.424)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="test_enemy" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 48.2882)
-
-[node name="test_enemy2" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 51.5882)
-
-[node name="test_enemy3" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 54.9882)
-
-[node name="test_enemy4" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 47.4383)
-
-[node name="test_enemy5" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 51.6383)
-
-[node name="test_enemy6" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 56.0383)
-
 [node name="door3" type="Node3D" parent="environment/world"]
 transform = Transform3D(5.21541e-08, 2.01133e-06, 15.487, 5.36888e-08, -12.0982, 2.57472e-06, 0.355565, 1.82678e-06, -2.86102e-06, 48.3, 6.6, 22.7)
 
@@ -796,7 +825,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 transform = Transform3D(-0.234897, -1.82678e-06, 5.41567e-06, 3.54684e-08, -12.0982, 2.57472e-06, 8.21412e-08, 2.01133e-06, 15.487, 36.2, 5, 7.1)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door4" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(3.58487, 8.54774e-06, -1.08448e-05, 3.64386e-05, -0.840934, 6.24356e-08, -5.43873e-05, -7.35806e-08, -0.714823, 0.776306, 0.115719, -0.0451993)
+transform = Transform3D(3.58487, 8.54774e-06, -1.08448e-05, 3.64386e-05, -0.840934, 6.24356e-08, -5.43873e-05, -7.35806e-08, -0.714823, 0.776307, 0.0600291, -0.0451993)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
 material = SubResource("StandardMaterial3D_td15d")
@@ -918,6 +947,15 @@ start_at = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/door8"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
+
+[node name="test_enemy23" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -12.5079, 2.15, 24.5624)
+
+[node name="test_enemy24" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -15.0899, 2.15, 26.9006)
+
+[node name="test_enemy25" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -8.20844, 2.15, 25.4515)
 
 [node name="player" type="Node3D" parent="."]
 
