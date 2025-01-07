@@ -1,0 +1,775 @@
+[gd_scene load_steps=31 format=3 uid="uid://cobaivdrvc1o1"]
+
+[ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
+[ext_resource type="Texture2D" uid="uid://bo75dfxkwjfq0" path="res://world/textures/floor_metal_1.png" id="2_kdisu"]
+[ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="3_gco0d"]
+[ext_resource type="Script" path="res://world/scripts/condition.gd" id="4_vhe78"]
+[ext_resource type="Texture2D" uid="uid://jns6vihsty5i" path="res://world/textures/door_metal_1_red_skull.png" id="5_gdx6s"]
+[ext_resource type="Texture2D" uid="uid://c573gc0i5pyut" path="res://world/textures/door_metal_1_blue_skull.png" id="6_jiv48"]
+[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="7_wtevh"]
+[ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_rlark"]
+[ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="9_v8vgy"]
+[ext_resource type="Script" path="res://player/player_movement.gd" id="10_yr07e"]
+[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="11_hs2y3"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="12_hpoon"]
+[ext_resource type="Script" path="res://player/camera.gd" id="13_jgag0"]
+[ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="14_cddmj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jl63"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_energy_multiplier = 0.0
+ground_bottom_color = Color(0.4383, 0.449628, 0.449629, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_i86jo"]
+sky_material = SubResource("ProceduralSkyMaterial_2jl63")
+
+[sub_resource type="Environment" id="Environment_n2gx2"]
+background_mode = 2
+sky = SubResource("Sky_i86jo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_e02lv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul4iw"]
+albedo_texture = ExtResource("2_kdisu")
+uv1_scale = Vector3(88, 88, 88)
+uv1_triplanar_sharpness = 0.148651
+
+[sub_resource type="BoxMesh" id="BoxMesh_y6i72"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0gf2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8k8v"]
+albedo_texture = ExtResource("5_gdx6s")
+uv1_scale = Vector3(2.635, 2.08, 2.08)
+uv1_offset = Vector3(-0.94, -0.065, 0)
+texture_filter = 0
+
+[sub_resource type="Resource" id="Resource_hthht"]
+script = ExtResource("4_vhe78")
+condition = 1
+tag = 2
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijkkt"]
+albedo_texture = ExtResource("6_jiv48")
+uv1_scale = Vector3(2.635, 2.08, 2.08)
+uv1_offset = Vector3(-0.94, -0.065, 0)
+texture_filter = 0
+
+[sub_resource type="Resource" id="Resource_t4phm"]
+script = ExtResource("4_vhe78")
+condition = 1
+tag = 4
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgbvd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pddes"]
+render_priority = 0
+shader = ExtResource("12_hpoon")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uowfd"]
+radius = 0.685569
+height = 3.68576
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3l0nh"]
+size = Vector3(1, 4.27051, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5f00d"]
+
+[node name="level_2" type="Node3D"]
+
+[node name="environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+sky_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+environment = SubResource("Environment_n2gx2")
+
+[node name="world" type="Node3D" parent="environment"]
+
+[node name="blocks" type="Node3D" parent="environment/world"]
+
+[node name="floor" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 0, 0.5)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="floor3" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 88, 3.8147e-06, 0.5)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="floor5" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -0.700001, 0, 87.8304)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="floor6" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 87.3, 0, 87.8304)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="floor4" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 88, 3.8466e-06, -87.5001)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="floor2" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 0, -87.5001)
+material_override = ExtResource("1_4ihrr")
+use_collision = true
+mesh = SubResource("BoxMesh_e02lv")
+material = SubResource("StandardMaterial3D_ul4iw")
+
+[node name="block" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, -4.00651)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block3" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 0.163604, 5.275, -6.20651)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block4" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 0.163604, 5.275, 6.49349)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block9" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 12.6525, 5.275, -11.7439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block10" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 12.6525, 5.275, 11.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block18" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, 1.23315e-07, 7.5421e-07, 1.13133e-08, 10.9, -1.7169e-08, -5.86125e-08, -1.62348e-08, -11.5272, 17.9525, 5.275, 17.7197)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block19" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-0.707107, 1.23315e-07, -8.15097, 9.05292e-09, 10.9, 8.00744e-08, 0.707107, -1.62348e-08, -8.15097, 21.857, 5.275, 26.8568)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block31" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, 1.23315e-07, 4.52526e-07, 1.13133e-08, 10.9, -1.03014e-08, -5.86125e-08, -1.62348e-08, -6.91632, 25.7525, 5.275, 15.3197)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block32" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-0.707107, 1.23315e-07, -5.72354, 9.05292e-09, 10.9, 5.62276e-08, 0.707107, -1.62348e-08, -5.72355, 28.457, 5.275, 21.2568)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block25" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-0.707107, 1.23315e-07, -8.15097, 9.05292e-09, 10.9, 8.00744e-08, 0.707107, -1.62348e-08, -8.15097, 30.057, 5.275, 35.0568)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block34" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-5.96046e-08, 2.89306e-07, -11.5272, 2.03663e-08, 10.9, 3.05953e-07, 1, -2.21992e-07, -1.66893e-06, 39.357, 5.275, 38.8568)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block35" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-5.96046e-08, 2.89306e-07, -8.4803, 2.03663e-08, 10.9, 2.25083e-07, 1, -2.21992e-07, -1.22779e-06, 40.857, 5.275, 29.6725)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block36" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, 2.21992e-07, 4.33435e-06, 2.03663e-08, 10.9, 6.10322e-07, -1.03316e-07, 2.89306e-07, -22.9947, 50.857, 5.275, 34.0668)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block33" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-0.707107, 1.23315e-07, -5.72354, 9.05292e-09, 10.9, 5.62276e-08, 0.707107, -1.62348e-08, -5.72355, 34.157, 5.275, 26.9568)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block11" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 31.096, 5.275, 11.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block37" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -4.60219e-07, 7.5421e-07, -4.2222e-08, 10.9, -3.73459e-07, -5.86125e-08, -3.53139e-07, -11.5272, 36.396, 5.275, 17.2561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block38" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(5.96046e-08, 1.42109e-14, 8.06904, -8.44439e-08, 10.9, -1.48391e-14, -1, -9.20438e-07, 1.66893e-07, 40.996, 5.275, 22.5561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block40" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.43984e-07, -4.67642e-07, -4.07325e-08, 10.9, 3.17438e-07, 1.03316e-07, -4.76454e-07, 7.26214, 44.596, 5.275, 25.7561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block41" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.43984e-07, -4.67642e-07, -4.07325e-08, 10.9, 3.17438e-07, 1.03316e-07, -4.76454e-07, 7.26214, 44.596, 5.275, 42.0561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block42" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -7.26214, -4.07325e-08, 10.9, 3.17438e-07, 1, 4.43984e-07, -7.8508e-07, 41.096, 5.275, 45.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block46" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 2.09478e-06, -8.44439e-08, 10.9, -4.28003e-14, -1.90739e-07, 9.01454e-15, -13.7981, 37.996, 5.275, 52.3561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block47" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 2.09478e-06, -8.44439e-08, 10.9, -4.28003e-14, -1.90739e-07, 9.01454e-15, -13.7981, 57.196, 5.275, 52.3561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block48" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.46635e-06, -8.44439e-08, 10.9, -2.99602e-14, -1.90739e-07, 9.01454e-15, -9.65864, 44.196, 5.275, 63.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block49" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.46635e-06, -8.44439e-08, 10.9, -2.99602e-14, -1.90739e-07, 9.01454e-15, -9.65864, 50.996, 5.275, 63.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block50" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.46635e-06, -8.44439e-08, 10.9, -2.99602e-14, -1.90739e-07, 9.01454e-15, -9.65864, 44.196, 5.275, 73.6561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block51" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(2.3445e-07, 3.12191e-14, 9.65864, -8.44439e-08, 10.9, -2.99602e-14, -1, -9.20438e-07, 1.88854e-06, 48.496, 5.275, 78.0561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block52" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(2.3445e-07, 3.12191e-14, 9.65864, -8.44439e-08, 10.9, -2.99602e-14, -1, -9.20438e-07, 1.88854e-06, 58.196, 5.275, 78.0561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block53" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 9.20438e-07, -2.31073e-06, -8.44439e-08, 10.9, -2.99602e-14, 2.78162e-07, 7.14528e-14, 9.65864, 62.496, 5.275, 72.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block54" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 9.20438e-07, -1.10915e-06, -8.44439e-08, 10.9, -1.43809e-14, 2.78162e-07, 7.14528e-14, 4.63615, 50.996, 5.275, 71.0561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block55" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-3.21873e-07, -3.42373e-14, -4.63615, -8.44439e-08, 10.9, -1.43809e-14, 1, 9.20438e-07, -1.31181e-06, 53.096, 5.275, 72.8561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block56" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-3.21873e-07, -3.42373e-14, -2.78169, -8.44439e-08, 10.9, -8.62854e-15, 1, 9.20438e-07, -7.87083e-07, 56.796, 5.275, 72.8561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block57" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -1.39689e-06, 1.27214e-06, -1.28155e-07, 10.9, -1.70228e-07, -3.65584e-07, -4.76454e-07, -3.89437, 57.696, 5.275, 70.3561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block58" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(3.57628e-07, 3.53139e-07, 3.89436, -1.29645e-07, 10.9, -1.2617e-07, -1, -1.41313e-06, 1.07288e-06, 60.096, 5.275, 68.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block43" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -7.26214, -4.07325e-08, 10.9, 3.17438e-07, 1, 4.43984e-07, -7.8508e-07, 54.096, 5.275, 45.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block44" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -7.26214, -4.07325e-08, 10.9, 3.17438e-07, 1, 4.43984e-07, -7.8508e-07, 41.096, 5.275, 59.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block45" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -7.26214, -4.07325e-08, 10.9, 3.17438e-07, 1, 4.43984e-07, -7.8508e-07, 54.096, 5.275, 59.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block39" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(5.96046e-08, 1.42109e-14, 11.5272, -8.44439e-08, 10.9, -2.11988e-14, -1, -9.20438e-07, 2.38419e-07, 56.096, 5.275, 22.5561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block59" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, -1.72127e-13, -11.0661, -8.44439e-08, 10.9, -2.03508e-14, 1, 9.20438e-07, -1.19631e-06, 67.496, 5.275, 22.5561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block61" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(5.96046e-08, 1.42109e-14, 6.45523, -8.44439e-08, 10.9, -1.18713e-14, -1, -9.20438e-07, 1.33514e-07, 62.196, 5.275, -3.2439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block63" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.43984e-07, -4.15682e-07, -4.07325e-08, 10.9, 2.82167e-07, 1.03316e-07, -4.76454e-07, 6.45523, 72.596, 5.275, -5.4439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block67" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.43984e-07, -4.15682e-07, -4.07325e-08, 10.9, 2.82167e-07, 1.03316e-07, -4.76454e-07, 6.45523, 64.896, 5.275, -6.9439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block75" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.43984e-07, -4.15682e-07, -4.07325e-08, 10.9, 2.82167e-07, 1.03316e-07, -4.76454e-07, 6.45523, 64.896, 5.275, -13.3439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block76" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -6.45523, -4.07325e-08, 10.9, 2.82167e-07, 1, 4.43984e-07, -6.97849e-07, 68.496, 5.275, -16.0439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block77" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -6.45523, -4.07325e-08, 10.9, 2.82167e-07, 1, 4.43984e-07, -6.97849e-07, 74.996, 5.275, -16.0439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block78" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -6.45523, -4.07325e-08, 10.9, 2.82167e-07, 1, 4.43984e-07, -6.97849e-07, 81.496, 5.275, -16.0439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block80" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -6.73808e-07, 6.95952e-07, -6.18172e-08, 10.9, 5.91118e-14, -1.49012e-07, -4.26326e-14, -7.53722, 84.2961, 5.275, -11.9439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block79" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, 4.76454e-07, -6.45523, -4.07325e-08, 10.9, 2.82167e-07, 1, 4.43984e-07, -6.97849e-07, 76.196, 5.275, -8.1439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block81" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 2.82832e-06, -8.44439e-08, 10.9, 1.70059e-13, -1.90739e-07, -4.78289e-14, -18.6298, 78.896, 5.275, 1.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block82" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 2.82832e-06, -8.44439e-08, 10.9, 1.70059e-13, -1.90739e-07, -4.78289e-14, -18.6298, 84.2924, 5.275, 1.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block83" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(2.3445e-07, 2.42961e-13, 6.45523, -8.44439e-08, 10.9, 5.89257e-14, -1, -9.20438e-07, 1.26218e-06, 76.096, 5.275, 9.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block84" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(2.3445e-07, 2.42961e-13, 6.45523, -8.44439e-08, 10.9, 5.89257e-14, -1, -9.20438e-07, 1.26218e-06, 76.096, 5.275, 16.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block85" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(2.3445e-07, 2.42961e-13, 6.45523, -8.44439e-08, 10.9, 5.89257e-14, -1, -9.20438e-07, 1.26218e-06, 82.496, 5.275, 16.1561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block86" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 9.20439e-07, -1.54435e-06, -8.44439e-08, 10.9, 5.89257e-14, 2.78162e-07, 3.60644e-13, 6.45523, 84.2961, 5.275, 13.6561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block87" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -4.43984e-07, 4.33088e-07, -4.07325e-08, 10.9, 2.82167e-07, -1.58933e-08, 4.76454e-07, -6.45523, -5.33303, 5.275, 18.6418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block101" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(5.96046e-08, -4.76454e-07, 8.3918, -4.07325e-08, 10.9, 3.66817e-07, -1, -4.43984e-07, 9.29832e-07, -1.43303, 5.275, 17.2418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block88" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -4.43984e-07, 4.33088e-07, -4.07325e-08, 10.9, 2.82167e-07, -1.58933e-08, 4.76454e-07, -6.45523, 2.36697, 5.275, 20.1418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block89" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -4.43984e-07, 4.33088e-07, -4.07325e-08, 10.9, 2.82167e-07, -1.58933e-08, 4.76454e-07, -6.45523, 2.36697, 5.275, 26.5418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block90" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -1.23303, 5.275, 29.2418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block91" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -7.73303, 5.275, 29.2418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block92" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -14.233, 5.275, 29.2418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block93" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 6.73808e-07, -3.85793e-07, -6.18172e-08, 10.9, 6.64933e-14, 1.35103e-07, -7.84805e-14, 7.53722, -17.033, 5.275, 25.1418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block94" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -8.93303, 5.275, 21.3418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block95" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 9.20438e-07, -2.04669e-06, -8.44439e-08, 10.9, 1.80291e-13, 1.79806e-07, 9.40589e-14, 18.6298, -11.633, 5.275, 12.0418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block96" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 9.20438e-07, -2.04669e-06, -8.44439e-08, 10.9, 1.80291e-13, 1.79806e-07, 9.40589e-14, 18.6298, -17.0294, 5.275, 12.0418)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block97" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9, 5.05996e-14, 1, 9.20438e-07, -1.38676e-06, -8.83303, 5.275, 3.24183)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block98" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9, 5.05997e-14, 1, 9.20438e-07, -1.38676e-06, -8.83303, 5.275, -2.95817)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block99" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9, 5.05996e-14, 1, 9.20438e-07, -1.38676e-06, -15.233, 5.275, -2.95818)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block100" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20439e-07, 1.74439e-06, -8.44439e-08, 10.9, 5.05997e-14, -2.54312e-07, -3.86092e-13, -6.45523, -17.033, 5.275, -0.458175)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block62" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(5.96046e-08, 1.42109e-14, 14.6857, -8.44439e-08, 10.9, -2.70072e-14, -1, -9.20438e-07, 3.03745e-07, 43.596, 5.275, -3.2439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block64" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, -1.72127e-13, -9.22176, -8.44439e-08, 10.9, -1.6959e-14, 1, 9.20438e-07, -9.96927e-07, 45.996, 5.275, -35.2439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block66" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, -1.72127e-13, -9.22176, -8.44439e-08, 10.9, -1.6959e-14, 1, 9.20438e-07, -9.96927e-07, 55.196, 5.275, -35.2439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block69" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 6.46811e-07, -8.44439e-08, 10.9, -7.83506e-15, -1.90739e-07, -2.12361e-13, -4.26045, 59.296, 5.275, -32.5339)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block65" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.47027e-07, -1.72127e-13, -9.22176, -8.44439e-08, 10.9, -1.6959e-14, 1, 9.20438e-07, -9.96927e-07, 45.996, 5.275, -29.8439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block68" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -25.7439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block70" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 59.296, 5.275, -25.7439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block71" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -16.5439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block72" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 59.296, 5.275, -16.5439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block73" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -7.3439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block74" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 59.296, 5.275, -7.3439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block60" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, -9.20438e-07, 3.69606e-06, -8.44439e-08, 10.9, -4.47717e-14, -1.90739e-07, -3.67259e-13, -24.3455, 72.5961, 5.275, 9.9561)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block12" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 31.096, 5.275, -11.5439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block13" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.60219e-07, 2.53531e-07, -4.2222e-08, 10.9, 6.34281e-07, -2.88102e-08, -5.99769e-07, 11.5272, 30.096, 5.275, -17.3075)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block15" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 4.60219e-07, -11.5272, 5.50247e-08, 10.9, 4.86701e-07, 1, -5.99769e-07, -2.5034e-07, 35.4672, 5.275, -22.5075)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block16" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 4.60219e-07, -11.5272, 5.50247e-08, 10.9, 4.86701e-07, 1, -5.99769e-07, -2.5034e-07, 8.19435, 5.275, -22.5075)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block17" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, 4.60219e-07, 7.5421e-07, 4.22219e-08, 10.9, -6.34281e-07, -5.86125e-08, -5.99769e-07, -11.5272, 2.99435, 5.275, -28.2711)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block20" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-1, 4.60219e-07, 7.5421e-07, 4.22219e-08, 10.9, -6.34281e-07, -5.86125e-08, -5.99769e-07, -11.5272, 2.99435, 5.275, -39.7983)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block21" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1.02324e-07, 4.60219e-07, 38.0398, -5.50247e-08, 10.9, -1.60611e-06, -1, -5.99769e-07, 4.15166e-06, 21.6379, 5.275, -45.0983)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block14" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 4.60219e-07, 2.53531e-07, -4.2222e-08, 10.9, 6.34281e-07, -2.88102e-08, -5.99769e-07, 11.5272, 14.196, 5.275, -17.3075)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block2" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, 4.25977)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block5" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, -4.00651)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block7" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, -9.49566)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block8" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, 9.71636)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block6" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, 4.25977)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block22" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 36.2, 5.275, -4.00651)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block30" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 36.2, 5.275, 1.48264)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block23" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 36.2, 5.275, -9.49566)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block24" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.74457, 36.4, 5.275, 10.2653)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block26" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -37.4903)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block27" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -42.9795)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block28" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -23.7674)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block29" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 3.8424, 41, 5.275, -28.424)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="door3" type="Node3D" parent="environment/world"]
+transform = Transform3D(-0.355565, -1.82678e-06, 2.70783e-06, 5.36888e-08, -12.0982, 2.57472e-06, 6.2169e-08, 2.01133e-06, 15.487, -98.5, 6.6, 69.1)
+
+[node name="door" type="CSGMesh3D" parent="environment/world/door3" node_paths=PackedStringArray("move_to", "start_at")]
+transform = Transform3D(3.582, 7.26466e-06, -7.5838e-06, 3.64095e-05, -0.714704, 4.36613e-08, -5.43438e-05, -6.25356e-08, -0.499876, 0, 0.11572, 0.0387421)
+use_collision = true
+mesh = SubResource("BoxMesh_0gf2b")
+material = SubResource("StandardMaterial3D_l8k8v")
+script = ExtResource("3_gco0d")
+conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_hthht")])
+move_to = NodePath("../move_to")
+start_at = NodePath("../move_to")
+
+[node name="move_to" type="Node3D" parent="environment/world/door3"]
+transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
+
+[node name="door4" type="Node3D" parent="environment/world"]
+transform = Transform3D(7.77112e-08, 2.01133e-06, 15.487, 5.36888e-08, -12.0982, 2.57472e-06, 0.355565, 1.82678e-06, -3.38479e-06, -103.4, 6, 93.4)
+
+[node name="door" type="CSGMesh3D" parent="environment/world/door4" node_paths=PackedStringArray("move_to", "start_at")]
+transform = Transform3D(3.582, 8.54774e-06, -7.5838e-06, 3.64095e-05, -0.840934, 4.36613e-08, -5.43438e-05, -7.35806e-08, -0.499876, 0.776306, 0.115719, 0.0387421)
+use_collision = true
+mesh = SubResource("BoxMesh_0gf2b")
+material = SubResource("StandardMaterial3D_ijkkt")
+script = ExtResource("3_gco0d")
+conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_t4phm")])
+move_to = NodePath("../move_to")
+start_at = NodePath("../move_to")
+
+[node name="move_to" type="Node3D" parent="environment/world/door4"]
+transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
+
+[node name="pillar" type="CSGMesh3D" parent="environment/world"]
+transform = Transform3D(1.69726, 0, 0, 0, 5.134, 0, 0, 0, 1.7792, -128.515, 0.445, 69.673)
+use_collision = true
+mesh = SubResource("BoxMesh_dgbvd")
+
+[node name="pickup_base" parent="environment/world/pillar" instance=ExtResource("7_wtevh")]
+transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.656322, 0)
+sprite = ExtResource("8_rlark")
+tag = 4
+
+[node name="pillar2" type="CSGMesh3D" parent="environment/world"]
+transform = Transform3D(1.69726, 0, 0, 0, 5.134, 0, 0, 0, 1.7792, 17.4853, 0.445, 68.273)
+use_collision = true
+mesh = SubResource("BoxMesh_dgbvd")
+
+[node name="pickup_base" parent="environment/world/pillar2" instance=ExtResource("7_wtevh")]
+transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.656322, 0)
+sprite = ExtResource("9_v8vgy")
+tag = 2
+
+[node name="player" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+
+[node name="player" type="CharacterBody3D" parent="player"]
+script = ExtResource("10_yr07e")
+current_speed = 14.0
+walk_speed = 6.0
+run_speed = 6.0
+sprint_speed = 6.0
+crouch_speed = 6.0
+acceleration = 6.0
+jump_height = 5.0
+
+[node name="player_mesh" type="CSGMesh3D" parent="player/player"]
+visible = false
+mesh = ExtResource("11_hs2y3")
+material = SubResource("ShaderMaterial_pddes")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84637, -0.0775976)
+shape = SubResource("CapsuleShape3D_uowfd")
+
+[node name="Camera3D" type="Camera3D" parent="player/player" node_paths=PackedStringArray("player_body")]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 3.022, 0.706)
+size = 25.0
+near = 0.001
+far = 4170.65
+script = ExtResource("13_jgag0")
+player_body = NodePath("..")
+
+[node name="shotgun" parent="player/player/Camera3D" node_paths=PackedStringArray("shoot_from") instance=ExtResource("14_cddmj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14859, -0.533362, -2.0621)
+shoot_from = NodePath("../RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="player/player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -11.405, 0)
+
+[node name="collision_area" type="Area3D" parent="player/player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player/collision_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, 0)
+shape = SubResource("BoxShape3D_3l0nh")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="player/player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+current = true
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="crosshair" type="TextureRect" parent="ui"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_5f00d")
