@@ -1,5 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=37 format=3 uid="uid://cobaivdrvc1o1"]
 
+[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
 [ext_resource type="Texture2D" uid="uid://bo75dfxkwjfq0" path="res://world/textures/floor_metal_1.png" id="2_kdisu"]
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="3_gco0d"]
@@ -76,6 +77,8 @@ uv1_scale = Vector3(2.775, 2.08, 2.08)
 uv1_offset = Vector3(-0.89, -0.065, 0)
 texture_filter = 0
 
+[sub_resource type="BoxMesh" id="BoxMesh_dgbvd"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_i24u2"]
 
 [sub_resource type="Resource" id="Resource_axxbh"]
@@ -86,7 +89,21 @@ has_been_completed = false
 amount = 0
 run_after_last = false
 
-[sub_resource type="BoxMesh" id="BoxMesh_dgbvd"]
+[sub_resource type="Resource" id="Resource_yduk8"]
+script = ExtResource("4_vhe78")
+condition = 1
+tag = 2
+has_been_completed = false
+amount = 0
+run_after_last = false
+
+[sub_resource type="Resource" id="Resource_ex0w2"]
+script = ExtResource("4_vhe78")
+condition = 0
+tag = 1
+has_been_completed = false
+amount = 0
+run_after_last = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pddes"]
 render_priority = 0
@@ -117,6 +134,46 @@ sky_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = SubResource("Environment_n2gx2")
+
+[node name="test_enemy" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.7845, 2.15, -4.91449)
+tag = 1
+
+[node name="test_enemy4" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.4845, 2.15, -40.0145)
+tag = 0
+
+[node name="test_enemy5" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(2.08616e-07, 2.28128e-15, -1, -7.10543e-15, 1, 1.42109e-14, 0.999999, -3.95129e-15, 2.38419e-07, 25.4845, 2.15, -37.9145)
+tag = 0
+
+[node name="test_enemy8" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(-0.999999, 3.95129e-15, -2.38419e-07, -7.10543e-15, 1, 1.42109e-14, 1.78814e-07, 2.28128e-15, -0.999999, 21.2845, 2.15, -35.8145)
+tag = 0
+
+[node name="test_enemy9" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 21.2845, 2.15, -38.0145)
+tag = 0
+
+[node name="test_enemy10" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 21.2845, 2.15, -39.8145)
+tag = 0
+
+[node name="test_enemy11" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(-1.19209e-07, -2.28128e-15, 0.999999, -7.10543e-15, 1, 1.42109e-14, -0.999999, 3.95129e-15, -1.93715e-07, 13.9845, 2.15, -24.6145)
+tag = 0
+
+[node name="test_enemy7" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(-0.999999, 3.95129e-15, -2.38419e-07, -7.10543e-15, 1, 1.42109e-14, 1.78814e-07, 2.28128e-15, -0.999999, 25.4845, 2.15, -35.8145)
+tag = 0
+
+[node name="test_enemy2" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 1.42109e-14, -0.866025, -1.42109e-14, 1, 2.84217e-14, 0.866025, 2.54287e-15, 0.5, 27.0845, 2.15, 5.88551)
+tag = 1
+
+[node name="test_enemy3" parent="environment" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.866025, 2.54287e-15, 0.5, -2.84217e-14, 1, 5.68434e-14, -0.5, -1.42109e-14, 0.866025, 9.58452, 2.15, -7.11449)
+tag = 1
 
 [node name="world" type="Node3D" parent="environment"]
 
@@ -164,42 +221,42 @@ use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor7" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 9.4, 0.5)
+[node name="roof" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 8.4, 0.5)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor8" type="CSGMesh3D" parent="environment/world/blocks"]
+[node name="roof2" type="CSGMesh3D" parent="environment/world/blocks"]
 transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 88, 9.4, 0.5)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor9" type="CSGMesh3D" parent="environment/world/blocks"]
+[node name="roof3" type="CSGMesh3D" parent="environment/world/blocks"]
 transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, -0.700001, 9.4, 87.8304)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor10" type="CSGMesh3D" parent="environment/world/blocks"]
+[node name="roof4" type="CSGMesh3D" parent="environment/world/blocks"]
 transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 87.3, 9.4, 87.8304)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor11" type="CSGMesh3D" parent="environment/world/blocks"]
+[node name="roof5" type="CSGMesh3D" parent="environment/world/blocks"]
 transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 88, 9.4, -87.5001)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
 mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
-[node name="floor12" type="CSGMesh3D" parent="environment/world/blocks"]
+[node name="roof6" type="CSGMesh3D" parent="environment/world/blocks"]
 transform = Transform3D(-4.80825e-08, -88, 0, 1.1, -3.8466e-06, 0, 0, 0, 88.0001, 0, 9.4, -87.5001)
 material_override = ExtResource("1_4ihrr")
 use_collision = true
@@ -207,7 +264,7 @@ mesh = SubResource("BoxMesh_e02lv")
 material = SubResource("StandardMaterial3D_ul4iw")
 
 [node name="block" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, -4.00651)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, -6.50651)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -252,7 +309,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block25" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-0.707107, 1.23315e-07, -8.15097, 9.05292e-09, 10.9, 8.00744e-08, 0.707107, -1.62348e-08, -8.15097, 30.057, 5.275, 35.0568)
+transform = Transform3D(-0.707107, 1.23315e-07, -8.23011, 9.05292e-09, 10.9, 8.08519e-08, 0.707107, -1.62348e-08, -8.23011, 30.057, 5.275, 35.0568)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -327,7 +384,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block50" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.46635e-06, -8.44439e-08, 10.9, -2.99602e-14, -1.90739e-07, 9.01454e-15, -9.65864, 44.196, 5.275, 73.6561)
+transform = Transform3D(-1, -9.20438e-07, 1.46635e-06, -8.44439e-08, 10.9, -2.99602e-14, -1.90739e-07, 9.01454e-15, -9.65864, 44.196, 5.275, 73.5859)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -557,7 +614,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block69" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 6.46811e-07, -8.44439e-08, 10.9, -7.83506e-15, -1.90739e-07, -2.12361e-13, -4.26045, 61.596, 5.275, -32.5339)
+transform = Transform3D(-1, -9.20438e-07, 7.76173e-07, -8.44439e-08, 10.9, -9.40207e-15, -1.90739e-07, -2.12361e-13, -5.11254, 61.596, 5.275, -32.9339)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -642,12 +699,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block2" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, 4.25977)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block5" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, -4.00651)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, 5.95977)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -662,7 +714,12 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block6" type="CSGMesh3D" parent="environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, 4.25977)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.19566, 6.4, 5.175, 5.85977)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block24" type="CSGMesh3D" parent="environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.19566, 6.4, 5.175, -5.64023)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -701,11 +758,29 @@ transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 3.8424, 41, 5.275, -28.424)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
+[node name="test_enemy" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 48.2882)
+
+[node name="test_enemy2" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 51.5882)
+
+[node name="test_enemy3" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 42.5104, 2.15, 54.9882)
+
+[node name="test_enemy4" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 47.4383)
+
+[node name="test_enemy5" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 51.6383)
+
+[node name="test_enemy6" parent="environment/world/blocks" instance=ExtResource("1_1ggj3")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 54.3329, 2.15, 56.0383)
+
 [node name="door3" type="Node3D" parent="environment/world"]
 transform = Transform3D(5.21541e-08, 2.01133e-06, 15.487, 5.36888e-08, -12.0982, 2.57472e-06, 0.355565, 1.82678e-06, -2.86102e-06, 48.3, 6.6, 22.7)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door3" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(3.582, 7.26466e-06, -7.5838e-06, 3.64095e-05, -0.714704, 4.36613e-08, -5.43438e-05, -6.25356e-08, -0.499876, 0, 0.11572, 0.0387421)
+transform = Transform3D(3.58247, 7.26466e-06, -8.34218e-06, 3.64143e-05, -0.714704, 4.80274e-08, -5.4351e-05, -6.25356e-08, -0.549864, 0, 0.165314, 0.0451989)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
 material = SubResource("StandardMaterial3D_l8k8v")
@@ -718,7 +793,7 @@ start_at = NodePath("../move_to")
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
 [node name="door4" type="Node3D" parent="environment/world"]
-transform = Transform3D(0.234897, 1.82678e-06, -4.06175e-06, 3.54684e-08, -12.0982, 2.57472e-06, -6.16059e-08, -2.01133e-06, -15.487, 36.2, 6, 5.6)
+transform = Transform3D(-0.234897, -1.82678e-06, 5.41567e-06, 3.54684e-08, -12.0982, 2.57472e-06, 8.21412e-08, 2.01133e-06, 15.487, 36.2, 5, 7.1)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door4" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(3.58487, 8.54774e-06, -1.08448e-05, 3.64386e-05, -0.840934, 6.24356e-08, -5.43873e-05, -7.35806e-08, -0.714823, 0.776306, 0.115719, -0.0451993)
@@ -734,7 +809,7 @@ start_at = NodePath("../move_to")
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
 [node name="door5" type="Node3D" parent="environment/world"]
-transform = Transform3D(5.13383e-08, 2.01133e-06, 15.487, 3.54684e-08, -12.0982, 2.57472e-06, 0.234897, 1.82678e-06, -3.38479e-06, 54.7, 6, -3.4)
+transform = Transform3D(-3.0803e-08, -2.01133e-06, -15.487, 3.54684e-08, -12.0982, 2.57472e-06, -0.234897, -1.82678e-06, 2.03087e-06, 58, 6, -3.4)
 
 [node name="door" type="CSGMesh3D" parent="environment/world/door5" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(3.58415, 8.54774e-06, -9.85894e-06, 3.64313e-05, -0.840934, 5.67597e-08, -5.43764e-05, -7.35806e-08, -0.649839, 0.776307, 0.115719, 0.103312)
@@ -747,21 +822,6 @@ move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
 [node name="move_to" type="Node3D" parent="environment/world/door5"]
-transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
-
-[node name="door2" type="Node3D" parent="environment/world/door5"]
-transform = Transform3D(0.355565, 1.05766e-06, -2.33847e-06, 3.10845e-08, -12.0982, 1.89776e-06, -5.36888e-08, -1.4825e-06, -15.487, 5.3, 6.6, 58.1)
-
-[node name="door" type="CSGMesh3D" parent="environment/world/door5/door2" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_i24u2")
-script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
-move_to = NodePath("../move_to")
-start_at = NodePath("../move_to")
-
-[node name="move_to" type="Node3D" parent="environment/world/door5/door2"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
 [node name="pillar" type="CSGMesh3D" parent="environment/world"]
@@ -822,7 +882,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
 script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
+conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh"), SubResource("Resource_yduk8")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
@@ -837,7 +897,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
 script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
+conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_ex0w2")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
@@ -860,9 +920,9 @@ start_at = NodePath("../move_to")
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
 [node name="player" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
 
 [node name="player" type="CharacterBody3D" parent="player"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("10_yr07e")
 current_speed = 14.0
 walk_speed = 6.0
