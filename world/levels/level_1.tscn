@@ -636,8 +636,8 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 73.7, 0, 1
 [node name="Enemy_Tag_3_3" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 122.555, 1.35682, 147.127)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 3
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_3"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -651,8 +651,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_3_4" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 100.155, 1.35682, 146.327)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 3
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_4"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -666,8 +666,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_3_5" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 130.392, 1.35682, 176.812)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 3
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_5"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -681,8 +681,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_3_6" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 113.592, 1.35682, 178.412)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 3
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_3_6"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -696,8 +696,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_1_4" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 47.7916, 1.35682, 178.512)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 1
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_4"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -711,8 +711,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_1_1" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 81.2916, 1.35682, 148.912)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 1
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_1"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -726,8 +726,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_1_2" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 40.1916, 1.35682, 146.912)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 1
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_2"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -741,8 +741,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_1_3" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 59.8916, 1.35682, 160.712)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 1
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_3"]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -756,8 +756,8 @@ skeleton = NodePath("../..")
 [node name="Enemy_Tag_1_5" type="CharacterBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 80.0552, 1.35682, 174.027)
 script = ExtResource("9_iwuxa")
-current_health = 30.0
 tag = 1
+current_health = 30.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy_Tag_1_5"]
 shape = SubResource("CapsuleShape3D_uw577")

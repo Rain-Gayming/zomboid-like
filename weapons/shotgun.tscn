@@ -88,6 +88,7 @@ anim = NodePath("AnimatedSprite3D")
 shoot_animation_frames = 11
 shoot_effects = [NodePath("audio/shooting/shotgun_shoot_3")]
 reload_effect = NodePath("audio/reload/shotgun_reload")
+loudness = 30.0
 shoot_cooldown = 1.0
 shoot_range = 60.0
 anim_name = "shotgun"

@@ -9,6 +9,7 @@ extends Node3D
 @export_group("audio")
 @export var shoot_effects: Array[AudioStreamPlayer3D]
 @export var reload_effect: AudioStreamPlayer3D
+@export var loudness: float
 
 @export_group("shooting")
 @export var shoot_cooldown: float
@@ -46,6 +47,8 @@ func shoot():
 	var random_play = randi_range(0, shoot_effects.size() - 1)
 	shoot_effects[random_play].play()
 
+	SignalManager.emit_noise(position, loudness)
+	
 	#raycasting
 	if shoot_from.is_colliding():
 		var hit = shoot_from.get_collider()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyieebvqet2es"]
+[gd_scene load_steps=8 format=3 uid="uid://dyieebvqet2es"]
 
 [ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="1_4y00u"]
 [ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_k0ebf"]
@@ -20,11 +20,17 @@ shader_parameter/highlight_strength = 1.0
 shader_parameter/highlight_color = Color(1, 1, 1, 1)
 shader_parameter/shadow_color = Color(1, 1, 1, 1)
 
-[node name="test_enemy" type="CharacterBody3D"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 1.6, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_hcha5"]
+size = Vector3(5.43555, 8.05957, 51.452)
+
+[node name="test_enemy" type="CharacterBody3D" node_paths=PackedStringArray("agent", "heard_from")]
+transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40776e-08, -3.1094e-07, 6.40777e-08, 1, 0, 1.6, 0)
 script = ExtResource("1_4y00u")
-current_health = 30.0
+agent = NodePath("agent")
 tag = 3
+heard_from = NodePath("heard_at")
+current_health = 30.0
+move_speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uw577")
@@ -34,3 +40,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.18992
 material_override = SubResource("ShaderMaterial_m1fds")
 mesh = ExtResource("4_ce1jg")
 skeleton = NodePath("../..")
+
+[node name="see_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="see_area"]
+transform = Transform3D(1, -5.08422e-13, 0, 5.07654e-13, 1, 0, 0, 0, 1, 2.17071e-12, 0, 24.1518)
+shape = SubResource("BoxShape3D_hcha5")
+
+[node name="heard_at" type="Node3D" parent="."]
+
+[node name="saw_at" type="Node3D" parent="."]
+
+[node name="agent" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+
+[connection signal="area_entered" from="see_area" to="." method="can_see"]

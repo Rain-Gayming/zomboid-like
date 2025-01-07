@@ -28,6 +28,9 @@ func ground_movement(delta: float):
 	var input_direction = Input.get_vector("movement_right", "movement_left", "movement_backward", "movement_forward")
 	var direction = (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 
+	if direction != Vector3.ZERO:
+		SignalManager.emit_noise(position, 20)
+
 	#slows down the player when moving backwards
 	if input_direction.y > 0.001:
 		if direction:
