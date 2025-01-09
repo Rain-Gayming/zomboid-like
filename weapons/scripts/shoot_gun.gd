@@ -47,7 +47,7 @@ func shoot():
 	var random_play = randi_range(0, shoot_effects.size() - 1)
 	shoot_effects[random_play].play()
 
-	SignalManager.emit_noise(position, loudness)
+	SignalManager.emit_noise(get_parent().get_parent().position, loudness)
 	
 	#raycasting
 	if shoot_from.is_colliding():

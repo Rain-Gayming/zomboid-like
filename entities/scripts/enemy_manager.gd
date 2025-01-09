@@ -25,7 +25,7 @@ func _ready():
 	SignalManager.collect_tag.connect(return_tag)
 	SignalManager.noise.connect(heard_sound)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if target != Vector3.ZERO:
 		var current_location = global_transform.origin
 		var next_location = target
@@ -48,9 +48,10 @@ func take_damage(damage: float):
 
 func heard_sound(position_from: Vector3, loudness: float):
 	var distance = position_from.distance_to(position)
-	if distance <= loudness:
-		target = position_from
-		agent.set_target_position(position_from)
+	if target == Vector3.ZERO:
+		if distance <= loudness:
+			target = position_from
+			agent.set_target_position(position_from)
 	
 
 func can_see(area: Area3D) -> void:
