@@ -160,8 +160,9 @@ far = 4170.65
 script = ExtResource("13_jgag0")
 player_body = NodePath("..")
 
-[node name="shotgun" parent="player/player/Camera3D" node_paths=PackedStringArray("shoot_from") instance=ExtResource("14_cddmj")]
+[node name="shotgun" parent="player/player/Camera3D" node_paths=PackedStringArray("player", "shoot_from") instance=ExtResource("14_cddmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14859, -0.533362, -2.0621)
+player = NodePath("../..")
 loudness = 45.0
 shoot_from = NodePath("../RayCast3D")
 

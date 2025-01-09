@@ -2,6 +2,7 @@ extends Node3D
 
 @export_group("references")
 @export var anim: AnimatedSprite3D
+@export var player: Node3D
 
 @export_group("animation")
 @export var shoot_animation_frames: int
@@ -47,7 +48,7 @@ func shoot():
 	var random_play = randi_range(0, shoot_effects.size() - 1)
 	shoot_effects[random_play].play()
 
-	SignalManager.emit_noise(get_parent().get_parent().position, loudness)
+	SignalManager.emit_noise(player.position, loudness, "shot")
 	
 	#raycasting
 	if shoot_from.is_colliding():

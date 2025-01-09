@@ -11,6 +11,8 @@ extends CharacterBody3D
 @export var can_see_target: bool
 @export var last_target_seen_position: Vector3
 @export var target: Vector3
+@export var last_sound_heard: String
+@export var last_sound_loudness: float
 var last_target: Vector3
 var navigationserver_region_rid: RID = get_rid()
 
@@ -32,7 +34,7 @@ func _physics_process(_delta):
 		var new_velocty = (next_location - current_location).normalized() * move_speed
 
 		velocity = new_velocty
-		
+
 		move_and_slide()
 
 func return_tag():
@@ -46,12 +48,15 @@ func take_damage(damage: float):
 		SignalManager.emit_update_tag(tag)
 
 
-func heard_sound(position_from: Vector3, loudness: float):
+func heard_sound(position_from: Vector3, loudness: float, name: String):
 	var distance = position_from.distance_to(position)
-	if target == Vector3.ZERO:
+	if target == Vector3.ZERO or last_sound_heard == name or loudness > last_sound_loudness:
 		if distance <= loudness:
 			target = position_from
 			agent.set_target_position(position_from)
+
+			last_sound_heard = name
+			last_sound_loudness = loudness
 	
 
 func can_see(area: Area3D) -> void:
