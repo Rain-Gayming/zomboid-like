@@ -22,7 +22,7 @@ var navigationserver_region_rid: RID = get_rid()
 @export var melee_range: float
 @export var missile_range: float
 @export var move_speed: float
-
+@export var is_ranged: bool
 
 func _ready():
 	SignalManager.collect_tag.connect(return_tag)
@@ -32,8 +32,14 @@ func _physics_process(_delta):
 	if target != Vector3.ZERO :
 		
 		var distance_to_target = position.distance_to(target)
+		var distance_to_stay
 
-		if distance_to_target > melee_range:
+		if is_ranged:
+			distance_to_stay = missile_range
+		else:
+			distance_to_stay = melee_range
+
+		if distance_to_target > distance_to_stay:
 
 			if current_action == -1:
 				current_action = randi_range(0, 1)
@@ -45,10 +51,15 @@ func _physics_process(_delta):
 
 			velocity = new_velocty
 
-			if distance_to_target <= melee_range:
+			if distance_to_target <= distance_to_stay:
 				target = Vector3.ZERO
-
-			move_and_slide()
+		elif distance_to_target < distance_to_stay:
+			print("moving backwards")
+			var direction = position.direction_to(target)
+			velocity = -direction * -move_speed
+		else: 
+			velocity = Vector3.ZERO
+		move_and_slide()
 
 func return_tag():
 	SignalManager.emit_return_tag(tag)

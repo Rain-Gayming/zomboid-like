@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=39 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
@@ -15,6 +15,7 @@
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="12_hpoon"]
 [ext_resource type="Script" path="res://player/camera.gd" id="13_jgag0"]
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="14_cddmj"]
+[ext_resource type="PackedScene" uid="uid://ox6mpt2hvr44" path="res://world/models/computer.blend" id="16_lusl1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pddes"]
 render_priority = 0
@@ -51,6 +52,7 @@ sky_material = SubResource("ProceduralSkyMaterial_2jl63")
 
 [sub_resource type="Environment" id="Environment_n2gx2"]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_i86jo")
 tonemap_mode = 2
 glow_enabled = true
@@ -130,6 +132,10 @@ run_after_last = false
 
 [node name="level_3" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="player" type="Node3D" parent="."]
 
 [node name="player" type="CharacterBody3D" parent="player"]
@@ -205,10 +211,6 @@ texture = SubResource("CanvasTexture_5f00d")
 navigation_mesh = SubResource("NavigationMesh_ivbaw")
 
 [node name="environment" type="Node3D" parent="nav_region"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="nav_region/environment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-sky_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="nav_region/environment"]
 environment = SubResource("Environment_n2gx2")
@@ -816,6 +818,26 @@ transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.65632
 sprite = ExtResource("9_v8vgy")
 tag = 2
 
+[node name="computers" type="Node3D" parent="nav_region"]
+
+[node name="computer2" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8725, 0.729278, -10.9731)
+
+[node name="computer3" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8725, 0.729278, -10.9731)
+
+[node name="computer4" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 16.4572, 0.729278, -10.9731)
+
+[node name="computer5" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(0.792, 0, 0, 0, 1, 0, 0, 0, 1, 27.1707, 0.729278, -10.9731)
+
+[node name="computer6" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7378, 0.729278, -10.9731)
+
+[node name="computer7" parent="nav_region/computers" instance=ExtResource("16_lusl1")]
+transform = Transform3D(0.8, 0, 0, 0, 1, 0, 0, 0, 1, 34.3225, 0.729278, -10.9731)
+
 [node name="enemies" type="Node3D" parent="."]
 
 [node name="enemy_tag_0_1" parent="enemies" instance=ExtResource("1_1ggj3")]
@@ -914,10 +936,12 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -15.0899, 
 [node name="test_enemy25" parent="enemies" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -8.20844, 2.5799, 25.4515)
 
-[node name="door3" type="Node3D" parent="."]
+[node name="doors" type="Node3D" parent="."]
+
+[node name="door3" type="Node3D" parent="doors"]
 transform = Transform3D(5.21541e-08, 2.01133e-06, 15.487, 5.36888e-08, -12.0982, 2.57472e-06, 0.355565, 1.82678e-06, -2.86102e-06, 48.3, 6.5, 22.7)
 
-[node name="door" type="CSGMesh3D" parent="door3" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door3" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(3.58247, 7.26466e-06, -8.34218e-06, 3.64143e-05, -0.714704, 4.80274e-08, -5.4351e-05, -6.25356e-08, -0.549864, 0, 0.165314, 0.0451989)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
@@ -927,13 +951,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_hthht")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door3"]
+[node name="move_to" type="Node3D" parent="doors/door3"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door4" type="Node3D" parent="."]
+[node name="door4" type="Node3D" parent="doors"]
 transform = Transform3D(-0.234897, -1.82678e-06, 5.41567e-06, 3.54684e-08, -12.0982, 2.57472e-06, 8.21412e-08, 2.01133e-06, 15.487, 36.2, 4.9, 7.1)
 
-[node name="door" type="CSGMesh3D" parent="door4" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door4" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(3.58487, 8.54774e-06, -1.08448e-05, 3.64386e-05, -0.840934, 6.24356e-08, -5.43873e-05, -7.35806e-08, -0.714823, 0.776307, 0.0600291, -0.0451993)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
@@ -943,13 +967,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_t4phm")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door4"]
+[node name="move_to" type="Node3D" parent="doors/door4"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door5" type="Node3D" parent="."]
+[node name="door5" type="Node3D" parent="doors"]
 transform = Transform3D(-3.0803e-08, -2.01133e-06, -15.487, 3.54684e-08, -12.0982, 2.57472e-06, -0.234897, -1.82678e-06, 2.03087e-06, 58, 5.9, -3.4)
 
-[node name="door" type="CSGMesh3D" parent="door5" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door5" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(3.58415, 8.54774e-06, -9.85894e-06, 3.64313e-05, -0.840934, 5.67597e-08, -5.43764e-05, -7.35806e-08, -0.649839, 0.776307, 0.115719, 0.103312)
 use_collision = true
 mesh = SubResource("BoxMesh_0gf2b")
@@ -959,13 +983,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_t4phm")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door5"]
+[node name="move_to" type="Node3D" parent="doors/door5"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door" type="Node3D" parent="."]
+[node name="door" type="Node3D" parent="doors"]
 transform = Transform3D(0.355565, 1.05766e-06, -1.87078e-06, 3.10845e-08, -12.0982, 1.51821e-06, -5.36888e-08, -1.4825e-06, -12.3896, 44.6, 6.5, 34.6)
 
-[node name="door" type="CSGMesh3D" parent="door" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
@@ -974,13 +998,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door"]
+[node name="move_to" type="Node3D" parent="doors/door"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door2" type="Node3D" parent="."]
+[node name="door2" type="Node3D" parent="doors"]
 transform = Transform3D(-6.9231e-08, -1.4825e-06, -12.3896, 3.10845e-08, -12.0982, 1.51821e-06, -0.355565, -1.05766e-06, 2.41234e-06, 68.1, 6.5, -3)
 
-[node name="door" type="CSGMesh3D" parent="door2" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door2" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
@@ -989,13 +1013,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door2"]
+[node name="move_to" type="Node3D" parent="doors/door2"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door6" type="Node3D" parent="."]
+[node name="door6" type="Node3D" parent="doors"]
 transform = Transform3D(-6.9231e-08, -1.4825e-06, -12.3896, 3.10845e-08, -12.0982, 1.51821e-06, -0.355565, -1.05766e-06, 2.41234e-06, 21.7, 6.5, 12.1)
 
-[node name="door" type="CSGMesh3D" parent="door6" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door6" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
@@ -1004,13 +1028,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh"), SubRe
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door6"]
+[node name="move_to" type="Node3D" parent="doors/door6"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door7" type="Node3D" parent="."]
+[node name="door7" type="Node3D" parent="doors"]
 transform = Transform3D(-6.9231e-08, -1.4825e-06, -12.3896, 3.10845e-08, -12.0982, 1.51821e-06, -0.355565, -1.05766e-06, 2.41234e-06, 21.7, 6.5, -11.6)
 
-[node name="door" type="CSGMesh3D" parent="door7" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door7" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
@@ -1019,13 +1043,13 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_ex0w2")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door7"]
+[node name="move_to" type="Node3D" parent="doors/door7"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
-[node name="door8" type="Node3D" parent="."]
+[node name="door8" type="Node3D" parent="doors"]
 transform = Transform3D(-0.355565, -1.58649e-06, 2.95391e-06, 4.66267e-08, -12.0982, 2.05977e-06, 8.47733e-08, 2.01133e-06, 12.3896, -5.3, 6.5, -2.28733e-06)
 
-[node name="door" type="CSGMesh3D" parent="door8" node_paths=PackedStringArray("move_to", "start_at")]
+[node name="door" type="CSGMesh3D" parent="doors/door8" node_paths=PackedStringArray("move_to", "start_at")]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
@@ -1034,5 +1058,152 @@ conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
-[node name="move_to" type="Node3D" parent="door8"]
+[node name="move_to" type="Node3D" parent="doors/door8"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, 0)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, -23)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, -34)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 9, -33)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 9, -5)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 42, 9, 8)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 54, 9, 8)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 43, 9, 8)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57, 9, 8)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 67, 9, 8)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D12" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 69, 9, -13)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D13" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 82, 9, 1)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D14" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 49, 9, 35)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D15" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 49, 9, 53)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D16" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48, 9, 75)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D17" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 60, 9, 75)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D18" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 37, 9, 34)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D19" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, 21)
+light_color = Color(0.738289, 0.598071, 0, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D20" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 9, 25)
+light_color = Color(1, 0.174984, 0.119162, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D21" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -15, 9, 13)
+light_color = Color(1, 0.174984, 0.119162, 1)
+light_energy = 2.495
+spot_range = 4096.0
+spot_angle = 55.9

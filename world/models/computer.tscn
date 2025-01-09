@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csvt7wof4n8qi"]
+
+[ext_resource type="PackedScene" uid="uid://ox6mpt2hvr44" path="res://world/models/computer.blend" id="1_mo3ee"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynyf0"]
+size = Vector3(3.98926, 4.90918, 3.95703)
+
+[node name="computer" instance=ExtResource("1_mo3ee")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ynyf0")
