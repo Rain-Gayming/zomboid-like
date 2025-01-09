@@ -35,6 +35,12 @@ func _physics_process(_delta):
 
 		velocity = new_velocty
 
+		var distance_to_target = position.distance_to(target)
+		var rand_distance = randf_range(0.5, 3)
+
+		if distance_to_target <= rand_distance:
+			target = Vector3.ZERO
+
 		move_and_slide()
 
 func return_tag():
@@ -48,16 +54,17 @@ func take_damage(damage: float):
 		SignalManager.emit_update_tag(tag)
 
 
-func heard_sound(position_from: Vector3, loudness: float, name: String):
+func heard_sound(position_from: Vector3, loudness: float, sound_name: String):
 	var distance = position_from.distance_to(position)
 	if target == Vector3.ZERO or last_sound_heard == name or loudness > last_sound_loudness:
 		if distance <= loudness:
 			target = position_from
 			agent.set_target_position(position_from)
 
-			last_sound_heard = name
+			last_sound_heard = sound_name
 			last_sound_loudness = loudness
 	
 
 func can_see(area: Area3D) -> void:
-	pass # Replace with function body.
+	if area.has_method("add_tag"):
+		target = area.position
