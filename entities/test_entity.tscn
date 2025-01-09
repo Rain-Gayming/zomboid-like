@@ -30,6 +30,8 @@ agent = NodePath("agent")
 tag = 3
 heard_from = NodePath("heard_at")
 current_health = 30.0
+melee_range = 5.0
+missile_range = 15.0
 move_speed = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

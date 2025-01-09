@@ -13,6 +13,7 @@ extends CharacterBody3D
 @export var target: Vector3
 @export var last_sound_heard: String
 @export var last_sound_loudness: float
+@export var current_action: int = -1 # -1 = no action 0 = melee 1 = ranged
 var last_target: Vector3
 var navigationserver_region_rid: RID = get_rid()
 
@@ -28,20 +29,26 @@ func _ready():
 	SignalManager.noise.connect(heard_sound)
 
 func _physics_process(_delta):
-	if target != Vector3.ZERO:
-		var current_location = global_transform.origin
-		var next_location = target
-		var new_velocty = (next_location - current_location).normalized() * move_speed
-
-		velocity = new_velocty
-
+	if target != Vector3.ZERO :
+		
 		var distance_to_target = position.distance_to(target)
-		var rand_distance = randf_range(0.5, 3)
 
-		if distance_to_target <= rand_distance:
-			target = Vector3.ZERO
+		if distance_to_target > melee_range:
 
-		move_and_slide()
+			if current_action == -1:
+				current_action = randi_range(0, 1)
+				print(current_action)
+
+			var current_location = global_transform.origin
+			var next_location = target
+			var new_velocty = (next_location - current_location).normalized() * move_speed
+
+			velocity = new_velocty
+
+			if distance_to_target <= melee_range:
+				target = Vector3.ZERO
+
+			move_and_slide()
 
 func return_tag():
 	SignalManager.emit_return_tag(tag)
