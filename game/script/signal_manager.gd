@@ -24,6 +24,6 @@ func emit_return_tag(tag: int):
 
 func emit_spawn(tag: int):
     spawn.emit(tag)
-
+ 
 func emit_noise(position_from: Vector3, loudness: float, sound_name: String):
     noise.emit(position_from, loudness, sound_name) 
