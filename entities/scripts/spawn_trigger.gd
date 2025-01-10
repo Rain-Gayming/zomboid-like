@@ -7,4 +7,5 @@ func _ready():
 	spawn_visual.visible = false
 
 func _on_area_area_entered(_area: Area3D) -> void:
-	SignalManager.emit_spawn(tag) 
+	if _area.is_in_group("player"):
+		SignalManager.emit_spawn(tag)

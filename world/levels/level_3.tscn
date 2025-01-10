@@ -125,7 +125,7 @@ run_after_last = false
 [sub_resource type="Resource" id="Resource_ex0w2"]
 script = ExtResource("4_vhe78")
 condition = 0
-tag = 1
+tag = 0
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -135,11 +135,10 @@ run_after_last = false
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-shadow_bias = 0.0
 
 [node name="player" type="Node3D" parent="."]
 
-[node name="player" type="CharacterBody3D" parent="player"]
+[node name="player" type="CharacterBody3D" parent="player" groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("10_yr07e")
 current_speed = 14.0
@@ -177,9 +176,9 @@ shoot_from = NodePath("../RayCast3D")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -11.405, 0)
 
-[node name="collision_area" type="Area3D" parent="player/player"]
+[node name="player_area" type="Area3D" parent="player/player" groups=["player"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player/collision_area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player/player_area" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, 0)
 shape = SubResource("BoxShape3D_3l0nh")
 
@@ -1065,140 +1064,160 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 [node name="SpotLight3D" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9, 0)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, 0)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D9" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 33, 9, 6)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, -23)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, -37.6127)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D6" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 9, -33)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D7" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 9, -5)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 43, 9, 8)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D8" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48, 9, 19)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D11" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 67, 9, 8)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D12" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 69, 9, -13)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D13" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 82, 9, 1)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D14" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 49, 9, 35)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D15" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 49, 9, 53)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D16" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48, 9, 75)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D17" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 60, 9, 75)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D18" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 37, 9, 34)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D19" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 9, 21)
 light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D20" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 9, 25)
 light_color = Color(1, 0.174984, 0.119162, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D21" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -15, 9, 13)
 light_color = Color(1, 0.174984, 0.119162, 1)
-light_energy = 2.495
+light_energy = 2.095
+shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 

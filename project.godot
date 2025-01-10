@@ -32,6 +32,10 @@ window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[global_group]
+
+player=""
+
 [input]
 
 cobmc={

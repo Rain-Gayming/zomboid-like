@@ -23,14 +23,24 @@ var navigationserver_region_rid: RID = get_rid()
 @export var missile_range: float
 @export var move_speed: float
 @export var is_ranged: bool
+@export var wait_time: float
+@export var wait_timer: float
+
 
 func _ready():
+	wait_timer = wait_time
 	SignalManager.collect_tag.connect(return_tag)
 	SignalManager.noise.connect(heard_sound)
+	SignalManager.emit_return_tag(tag)
 
-func _physics_process(_delta):
-	if target != Vector3.ZERO :
-		
+func _physics_process(delta):
+
+
+	wait_timer -= delta
+	if target != Vector3.ZERO and wait_timer <= 0:
+
+		look_at(target)
+		rotation.x = 0
 		var distance_to_target = position.distance_to(target)
 		var distance_to_stay
 
@@ -74,7 +84,7 @@ func take_damage(damage: float):
 
 func heard_sound(position_from: Vector3, loudness: float, sound_name: String):
 	var distance = position_from.distance_to(position)
-	if target == Vector3.ZERO or last_sound_heard == name or loudness > last_sound_loudness:
+	if target == Vector3.ZERO or last_sound_heard == name or loudness > last_sound_loudness and wait_timer <= 0:
 		if distance <= loudness:
 			target = position_from
 			agent.set_target_position(position_from)
@@ -84,5 +94,5 @@ func heard_sound(position_from: Vector3, loudness: float, sound_name: String):
 	
 
 func can_see(area: Area3D) -> void:
-	if area.has_method("add_tag"):
+	if area.is_in_group("player"):
 		target = area.position

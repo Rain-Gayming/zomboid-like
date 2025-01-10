@@ -102,7 +102,7 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gu62l")
 animation = &"shotgun_idle"
-frame_progress = 0.103072
+frame_progress = 0.00768893
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.856889, 0.515502, 0, -0.515502, 0.856889, 0.211421, -0.0711115, -0.379697)
