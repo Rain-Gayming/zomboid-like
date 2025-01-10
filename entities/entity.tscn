@@ -23,24 +23,23 @@ shader_parameter/shadow_color = Color(1, 1, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcha5"]
 size = Vector3(5.43555, 8.05957, 51.452)
 
-[node name="test_enemy" type="CharacterBody3D" node_paths=PackedStringArray("agent", "heard_from")]
-transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40776e-08, -3.1094e-07, 6.40777e-08, 1, 0, 1.6, 0)
+[node name="test_enemy" type="CharacterBody3D" node_paths=PackedStringArray("agent")]
+transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40777e-08, -3.1094e-07, 6.40777e-08, 1, 0, 1.6, 0)
 script = ExtResource("1_j4x0f")
 agent = NodePath("agent")
 tag = 3
-heard_from = NodePath("heard_at")
 current_health = 30.0
 melee_range = 3.0
 missile_range = 15.0
 move_speed = 5.0
-wait_time = 3.0
+wait_time = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, -3.84397e-16, 0, -3.84362e-16, 1, 0, 0, 0, 1, -2.08057e-08, 0, 0.0669124)
 shape = SubResource("CapsuleShape3D_uw577")
 
 [node name="HumanoidMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
+transform = Transform3D(-1, -5.30836e-08, -8.74228e-08, -5.30836e-08, 1, -2.15578e-07, 8.74228e-08, -2.15578e-07, -1, -0.0272173, -1.67305, -0.0660788)
 material_override = SubResource("ShaderMaterial_m1fds")
 mesh = ExtResource("4_5pyo8")
 skeleton = NodePath("../..")

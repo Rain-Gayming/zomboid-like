@@ -6,16 +6,11 @@ extends CharacterBody3D
 @export var tag: int
 
 @export_group("targetting")
-@export var has_target: bool
-@export var heard_from: Node3D
-@export var can_see_target: bool
-@export var last_target_seen_position: Vector3
-@export var target: Vector3
-@export var last_sound_heard: String
-@export var last_sound_loudness: float
+@export var target: Node3D
 @export var current_action: int = -1 # -1 = no action 0 = melee 1 = ranged
 var last_target: Vector3
 var navigationserver_region_rid: RID = get_rid()
+@export var rotation_speed: float = 15
 
 @export_group("stats")
 @export var current_health: float
@@ -30,18 +25,20 @@ var navigationserver_region_rid: RID = get_rid()
 func _ready():
 	wait_timer = wait_time
 	SignalManager.collect_tag.connect(return_tag)
-	SignalManager.noise.connect(heard_sound)
 	SignalManager.emit_return_tag(tag)
+	target = get_tree().get_nodes_in_group("player")[0]
 
 func _physics_process(delta):
-
-
 	wait_timer -= delta
-	if target != Vector3.ZERO and wait_timer <= 0:
+	if target != null and wait_timer <= 0:
+		#rotates the enemy to the target+
+		look_at(target.global_position, -transform.basis.y)
 
-		look_at(target)
 		rotation.x = 0
-		var distance_to_target = position.distance_to(target)
+		rotation.z = 0
+		#sets the target to the player
+		
+		var distance_to_target = position.distance_to(target.position)
 		var distance_to_stay
 
 		if is_ranged:
@@ -56,16 +53,16 @@ func _physics_process(delta):
 				print(current_action)
 
 			var current_location = global_transform.origin
-			var next_location = target
+			var next_location = target.position
 			var new_velocty = (next_location - current_location).normalized() * move_speed
 
 			velocity = new_velocty
 
 			if distance_to_target <= distance_to_stay:
-				target = Vector3.ZERO
+				target = null
 		elif distance_to_target < distance_to_stay:
 			print("moving backwards")
-			var direction = position.direction_to(target)
+			var direction = position.direction_to(target.position)
 			velocity = -direction * -move_speed
 		else: 
 			velocity = Vector3.ZERO
@@ -81,18 +78,3 @@ func take_damage(damage: float):
 		self.queue_free()
 		SignalManager.emit_update_tag(tag)
 
-
-func heard_sound(position_from: Vector3, loudness: float, sound_name: String):
-	var distance = position_from.distance_to(position)
-	if target == Vector3.ZERO or last_sound_heard == name or loudness > last_sound_loudness and wait_timer <= 0:
-		if distance <= loudness:
-			target = position_from
-			agent.set_target_position(position_from)
-
-			last_sound_heard = sound_name
-			last_sound_loudness = loudness
-	
-
-func can_see(area: Area3D) -> void:
-	if area.is_in_group("player"):
-		target = area.position

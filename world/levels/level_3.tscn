@@ -173,7 +173,7 @@ loudness = 45.0
 shoot_from = NodePath("../RayCast3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="player/player/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.69579e-09, 0, 0.484219)
 target_position = Vector3(0, -11.405, 0)
 
 [node name="player_area" type="Area3D" parent="player/player" groups=["player"]]
