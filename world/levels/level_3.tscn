@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=39 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://player/player_movement.gd" id="10_yr07e"]
 [ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="11_hs2y3"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="12_hpoon"]
-[ext_resource type="PackedScene" uid="uid://byuwl0kp2ej3" path="res://entities/entity.tscn" id="12_wwm38"]
 [ext_resource type="Script" path="res://player/camera.gd" id="13_jgag0"]
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="14_cddmj"]
 [ext_resource type="PackedScene" uid="uid://c2aejhuog02yj" path="res://entities/spawn_region.tscn" id="16_8b0kv"]
@@ -136,6 +135,7 @@ run_after_last = false
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+shadow_bias = 0.0
 
 [node name="player" type="Node3D" parent="."]
 
@@ -840,15 +840,12 @@ light_energy = 7.019
 
 [node name="spawner_0_1" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 2.11758e-22, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.7845, 0.5799, -4.91449)
-entity_to_spawn = ExtResource("12_wwm38")
 
 [node name="spawner_0_2" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 1.42109e-14, -0.866025, -1.42109e-14, 1, 2.84217e-14, 0.866025, 2.54287e-15, 0.5, 27.0845, 0.5799, 5.88551)
-entity_to_spawn = ExtResource("12_wwm38")
 
 [node name="spawner_0_3" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.866025, 2.54287e-15, 0.5, -2.84217e-14, 1, 5.68434e-14, -0.5, -1.42109e-14, 0.866025, 9.58452, 0.5799, -7.11449)
-entity_to_spawn = ExtResource("12_wwm38")
 
 [node name="spawner_1_1" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.4845, 0.5799, -40.0145)

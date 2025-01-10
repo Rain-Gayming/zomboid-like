@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func spawn(tag: int):
 	if tag == my_tag and not has_spawned:
+		print("tag found")
 		SignalManager.emit_update_tag(my_tag)
 		has_spawned = true
 		var new_entity = entity_to_spawn.instantiate()

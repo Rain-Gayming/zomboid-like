@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyieebvqet2es"]
+[gd_scene load_steps=7 format=3 uid="uid://dyieebvqet2es"]
 
 [ext_resource type="Script" path="res://entities/scripts/enemy_spawner.gd" id="1_wj0yd"]
+[ext_resource type="PackedScene" uid="uid://byuwl0kp2ej3" path="res://entities/entity.tscn" id="2_8em53"]
 [ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_k0ebf"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_0tyu4"]
 [ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="4_ce1jg"]
@@ -19,6 +20,7 @@ shader_parameter/shadow_color = Color(1, 1, 1, 1)
 [node name="spawner" type="Node3D" node_paths=PackedStringArray("spawn_visual")]
 script = ExtResource("1_wj0yd")
 spawn_visual = NodePath("HumanoidMesh")
+entity_to_spawn = ExtResource("2_8em53")
 
 [node name="HumanoidMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40776e-08, -3.1094e-07, 6.40777e-08, 1, -0.0391245, -0.07305, 0.189924)
