@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyieebvqet2es"]
+
+[ext_resource type="Script" path="res://entities/scripts/enemy_spawner.gd" id="1_wj0yd"]
+[ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_k0ebf"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_0tyu4"]
+[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="4_ce1jg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1fds"]
+render_priority = 0
+next_pass = ExtResource("2_k0ebf")
+shader = ExtResource("3_0tyu4")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(1, 1, 1, 1)
+
+[node name="spawner" type="Node3D" node_paths=PackedStringArray("spawn_visual")]
+script = ExtResource("1_wj0yd")
+spawn_visual = NodePath("HumanoidMesh")
+
+[node name="HumanoidMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40776e-08, -3.1094e-07, 6.40777e-08, 1, -0.0391245, -0.07305, 0.189924)
+material_override = SubResource("ShaderMaterial_m1fds")
+mesh = ExtResource("4_ce1jg")

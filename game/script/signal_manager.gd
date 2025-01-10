@@ -3,6 +3,7 @@ extends Node
 signal collect_tag()
 signal return_tag(tag)
 signal update_tag(tag)
+signal spawn(tag)
 signal open_menu
 signal close_menu
 signal noise(position_from, loudness, name)
@@ -21,5 +22,8 @@ func emit_collect_tag():
 func emit_return_tag(tag: int):
     return_tag.emit(tag)
 
-func emit_noise(position_from: Vector3, loudness: float, name: String):
-    noise.emit(position_from, loudness, name)
+func emit_spawn(tag: int):
+    spawn.emit(tag)
+
+func emit_noise(position_from: Vector3, loudness: float, sound_name: String):
+    noise.emit(position_from, loudness, sound_name) 

@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_k5x7d"]
 [ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="9_iwuxa"]
 [ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="10_tpt6b"]
-[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="15_4roaq"]
+[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="15_4roaq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5tnbj"]
 sky_top_color = Color(0, 0, 0, 1)

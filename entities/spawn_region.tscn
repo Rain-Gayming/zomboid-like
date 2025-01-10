@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2aejhuog02yj"]
+
+[ext_resource type="Script" path="res://entities/scripts/spawn_trigger.gd" id="1_la76j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4rooy"]
+size = Vector3(17.5527, 14.5762, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_df6o3"]
+
+[node name="spawn_region" type="Node3D" node_paths=PackedStringArray("spawn_visual")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 3, -12.7831)
+script = ExtResource("1_la76j")
+spawn_visual = NodePath("CSGMesh3D")
+
+[node name="area" type="Area3D" parent="."]
+
+[node name="collider" type="CollisionShape3D" parent="area"]
+shape = SubResource("BoxShape3D_4rooy")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(26.39, 0, 0, 0, 18.304, 0, 0, 0, 1.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_df6o3")
+
+[connection signal="area_entered" from="area" to="." method="_on_area_area_entered"]

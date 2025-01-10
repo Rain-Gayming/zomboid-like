@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyieebvqet2es"]
+[gd_scene load_steps=8 format=3 uid="uid://byuwl0kp2ej3"]
 
-[ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="1_4y00u"]
-[ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_k0ebf"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_0tyu4"]
-[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="4_ce1jg"]
+[ext_resource type="Script" path="res://entities/scripts/enemy_manager.gd" id="1_j4x0f"]
+[ext_resource type="Material" uid="uid://s23a1bjtnutc" path="res://shaders/outline_mat.tres" id="2_r8rpm"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_l7tdl"]
+[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="4_5pyo8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uw577"]
 radius = 0.511963
@@ -11,8 +11,8 @@ height = 3.64708
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m1fds"]
 render_priority = 0
-next_pass = ExtResource("2_k0ebf")
-shader = ExtResource("3_0tyu4")
+next_pass = ExtResource("2_r8rpm")
+shader = ExtResource("3_l7tdl")
 shader_parameter/shadows_enabled = true
 shader_parameter/highlights_enabled = true
 shader_parameter/shadow_strength = 1.0
@@ -25,7 +25,7 @@ size = Vector3(5.43555, 8.05957, 51.452)
 
 [node name="test_enemy" type="CharacterBody3D" node_paths=PackedStringArray("agent", "heard_from")]
 transform = Transform3D(1, 2.65418e-08, 3.1094e-07, -2.65418e-08, 1, -6.40776e-08, -3.1094e-07, 6.40777e-08, 1, 0, 1.6, 0)
-script = ExtResource("1_4y00u")
+script = ExtResource("1_j4x0f")
 agent = NodePath("agent")
 tag = 3
 heard_from = NodePath("heard_at")
@@ -41,7 +41,7 @@ shape = SubResource("CapsuleShape3D_uw577")
 [node name="HumanoidMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0391245, -1.67305, 0.189924)
 material_override = SubResource("ShaderMaterial_m1fds")
-mesh = ExtResource("4_ce1jg")
+mesh = ExtResource("4_5pyo8")
 skeleton = NodePath("../..")
 
 [node name="see_area" type="Area3D" parent="."]

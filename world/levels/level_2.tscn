@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="7_qwa0t"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="7_rxlop"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="8_pl3bb"]
-[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/test_entity.tscn" id="15_h7l5u"]
+[ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="15_h7l5u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jl63"]
 sky_top_color = Color(0, 0, 0, 1)
