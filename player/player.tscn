@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtawguiwcrrbk"]
+
+[ext_resource type="Script" path="res://player/player_movement.gd" id="1_7blun"]
+[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="2_6omjs"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_rdqua"]
+[ext_resource type="Script" path="res://player/camera.gd" id="4_7vx3t"]
+[ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="5_uivoq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pddes"]
+render_priority = 0
+shader = ExtResource("3_rdqua")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uowfd"]
+radius = 0.685569
+height = 3.68576
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3l0nh"]
+size = Vector3(1, 4.27051, 1)
+
+[node name="player" type="Node3D"]
+
+[node name="player" type="CharacterBody3D" parent="." groups=["player"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_7blun")
+current_speed = 14.0
+walk_speed = 6.0
+run_speed = 6.0
+sprint_speed = 6.0
+crouch_speed = 6.0
+acceleration = 6.0
+jump_height = 5.0
+
+[node name="player_mesh" type="CSGMesh3D" parent="player"]
+visible = false
+mesh = ExtResource("2_6omjs")
+material = SubResource("ShaderMaterial_pddes")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84637, -0.0775976)
+shape = SubResource("CapsuleShape3D_uowfd")
+
+[node name="Camera3D" type="Camera3D" parent="player" node_paths=PackedStringArray("player_body")]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 3.022, 0.706)
+size = 25.0
+near = 0.001
+far = 4170.65
+script = ExtResource("4_7vx3t")
+player_body = NodePath("..")
+
+[node name="shotgun" parent="player/Camera3D" node_paths=PackedStringArray("player", "shoot_from") instance=ExtResource("5_uivoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14859, -0.533362, -2.0621)
+player = NodePath("../..")
+loudness = 45.0
+shoot_from = NodePath("../RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.69579e-09, 0, 0.484219)
+target_position = Vector3(0, -11.405, 0)
+
+[node name="player_area" type="Area3D" parent="player" groups=["player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player_area" groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, 0)
+shape = SubResource("BoxShape3D_3l0nh")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
+current = true

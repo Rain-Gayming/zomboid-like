@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=31 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
+[ext_resource type="PackedScene" uid="uid://dtawguiwcrrbk" path="res://player/player.tscn" id="1_pkapy"]
 [ext_resource type="Texture2D" uid="uid://bo75dfxkwjfq0" path="res://world/textures/floor_metal_1.png" id="2_kdisu"]
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="3_gco0d"]
 [ext_resource type="Script" path="res://world/scripts/condition.gd" id="4_vhe78"]
@@ -10,29 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="7_wtevh"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_rlark"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="9_v8vgy"]
-[ext_resource type="Script" path="res://player/player_movement.gd" id="10_yr07e"]
-[ext_resource type="ArrayMesh" uid="uid://cv512x11wg0m4" path="res://entities/graphics/humanoid_mesh.obj" id="11_hs2y3"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="12_hpoon"]
-[ext_resource type="Script" path="res://player/camera.gd" id="13_jgag0"]
-[ext_resource type="PackedScene" uid="uid://dlj4u2fwgy5s5" path="res://weapons/shotgun.tscn" id="14_cddmj"]
 [ext_resource type="PackedScene" uid="uid://c2aejhuog02yj" path="res://entities/spawn_region.tscn" id="16_8b0kv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pddes"]
-render_priority = 0
-shader = ExtResource("12_hpoon")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.4
-shader_parameter/highlight_strength = 0.1
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uowfd"]
-radius = 0.685569
-height = 3.68576
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3l0nh"]
-size = Vector3(1, 4.27051, 1)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5f00d"]
 
@@ -47,13 +26,13 @@ sky_energy_multiplier = 0.0
 ground_bottom_color = Color(0.4383, 0.449628, 0.449629, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_i86jo"]
+[sub_resource type="Sky" id="Sky_hdyj6"]
 sky_material = SubResource("ProceduralSkyMaterial_2jl63")
 
 [sub_resource type="Environment" id="Environment_n2gx2"]
 background_mode = 2
 background_energy_multiplier = 0.03
-sky = SubResource("Sky_i86jo")
+sky = SubResource("Sky_hdyj6")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -122,69 +101,9 @@ has_been_completed = false
 amount = 0
 run_after_last = false
 
-[sub_resource type="Resource" id="Resource_ex0w2"]
-script = ExtResource("4_vhe78")
-condition = 0
-tag = 0
-has_been_completed = false
-amount = 0
-run_after_last = false
-
 [node name="level_3" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
-[node name="player" type="Node3D" parent="."]
-
-[node name="player" type="CharacterBody3D" parent="player" groups=["player"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-script = ExtResource("10_yr07e")
-current_speed = 14.0
-walk_speed = 6.0
-run_speed = 6.0
-sprint_speed = 6.0
-crouch_speed = 6.0
-acceleration = 6.0
-jump_height = 5.0
-
-[node name="player_mesh" type="CSGMesh3D" parent="player/player"]
-visible = false
-mesh = ExtResource("11_hs2y3")
-material = SubResource("ShaderMaterial_pddes")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84637, -0.0775976)
-shape = SubResource("CapsuleShape3D_uowfd")
-
-[node name="Camera3D" type="Camera3D" parent="player/player" node_paths=PackedStringArray("player_body")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 3.022, 0.706)
-size = 25.0
-near = 0.001
-far = 4170.65
-script = ExtResource("13_jgag0")
-player_body = NodePath("..")
-
-[node name="shotgun" parent="player/player/Camera3D" node_paths=PackedStringArray("player", "shoot_from") instance=ExtResource("14_cddmj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14859, -0.533362, -2.0621)
-player = NodePath("../..")
-loudness = 45.0
-shoot_from = NodePath("../RayCast3D")
-
-[node name="RayCast3D" type="RayCast3D" parent="player/player/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.69579e-09, 0, 0.484219)
-target_position = Vector3(0, -11.405, 0)
-
-[node name="player_area" type="Area3D" parent="player/player" groups=["player"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player/player/player_area" groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, 0)
-shape = SubResource("BoxShape3D_3l0nh")
-
-[node name="AudioListener3D" type="AudioListener3D" parent="player/player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 0)
-current = true
+[node name="player" parent="." instance=ExtResource("1_pkapy")]
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -214,6 +133,10 @@ navigation_mesh = SubResource("NavigationMesh_ivbaw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="nav_region/environment"]
 environment = SubResource("Environment_n2gx2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="nav_region/environment/WorldEnvironment"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
 
 [node name="world" type="Node3D" parent="nav_region/environment"]
 
@@ -1032,14 +955,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 [node name="door7" type="Node3D" parent="doors"]
 transform = Transform3D(-6.9231e-08, -1.4825e-06, -12.3896, 3.10845e-08, -12.0982, 1.51821e-06, -0.355565, -1.05766e-06, 2.41234e-06, 21.7, 6.5, -11.6)
 
-[node name="door" type="CSGMesh3D" parent="doors/door7" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_i24u2")
-script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_ex0w2")])
-move_to = NodePath("../move_to")
-start_at = NodePath("../move_to")
+[node name="door" parent="doors/door7" instance=ExtResource("1_pkapy")]
 
 [node name="move_to" type="Node3D" parent="doors/door7"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
