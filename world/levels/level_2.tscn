@@ -483,6 +483,9 @@ transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.65632
 sprite = ExtResource("7_rxlop")
 tag = 4
 
+[node name="OmniLight3D" type="OmniLight3D" parent="environment/world/pillar/pickup_base"]
+light_color = Color(1, 0, 0, 1)
+
 [node name="pillar2" type="CSGMesh3D" parent="environment/world"]
 transform = Transform3D(1.69726, 0, 0, 0, 5.134, 0, 0, 0, 1.7792, 17.4853, 0.445, 68.273)
 use_collision = true
@@ -492,6 +495,10 @@ mesh = SubResource("BoxMesh_dgbvd")
 transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.656322, 0)
 sprite = ExtResource("8_pl3bb")
 tag = 2
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/pillar2/pickup_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0.823529, 0.823529, 1)
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -579,7 +586,7 @@ spot_angle = 55.9
 
 [node name="SpotLight3D24" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 24.8497, 9, 59)
-light_color = Color(0.738289, 0.598071, 0, 1)
+light_color = Color(0, 0.823529, 0.823529, 1)
 light_energy = 2.095
 shadow_enabled = true
 spot_range = 4096.0
@@ -611,7 +618,7 @@ spot_angle = 55.9
 
 [node name="SpotLight3D28" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -116.15, 9, 49)
-light_color = Color(0.738289, 0.598071, 0, 1)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.095
 shadow_enabled = true
 spot_range = 4096.0
@@ -619,7 +626,7 @@ spot_angle = 55.9
 
 [node name="SpotLight3D29" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -116.15, 9, 70)
-light_color = Color(0.738289, 0.598071, 0, 1)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.095
 shadow_enabled = true
 spot_range = 4096.0
@@ -627,7 +634,7 @@ spot_angle = 55.9
 
 [node name="SpotLight3D30" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -116.15, 9, 91)
-light_color = Color(0.738289, 0.598071, 0, 1)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.095
 shadow_enabled = true
 spot_range = 4096.0

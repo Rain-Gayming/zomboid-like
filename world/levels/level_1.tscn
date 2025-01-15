@@ -183,9 +183,13 @@ use_collision = true
 mesh = SubResource("BoxMesh_i804w")
 
 [node name="pickup_base" parent="environment/world/red_room/pillar" instance=ExtResource("2_km60l")]
-transform = Transform3D(0.589, 0, 0, 0, 0.195, 0, 0, 0, 0.589, 0, 0.708434, 0)
+transform = Transform3D(0.589, 0, 0, 0, 0.195, 0, 0, 0, 0.589, -0.0218811, 0.73022, -0.0450897)
 sprite = ExtResource("3_3x4ra")
 tag = 2
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/red_room/pillar/pickup_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
 
 [node name="blocks" type="Node3D" parent="environment/world/red_room"]
 
@@ -429,6 +433,10 @@ transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.65632
 sprite = ExtResource("8_k5x7d")
 tag = 4
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/blue_room/pillar/pickup_base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0, 0.823529, 0.823529, 1)
+
 [node name="final_coridoor" type="Node3D" parent="environment/world"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 289.4)
 
@@ -664,8 +672,17 @@ spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D18" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 118, 9, 163)
-light_color = Color(0.738289, 0.598071, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 128, 9, 163)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.095
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 4096.0
+spot_angle = 55.9
+
+[node name="SpotLight3D30" type="SpotLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 109, 9, 163)
+light_color = Color(1, 0, 0, 1)
 light_energy = 2.095
 light_bake_mode = 1
 shadow_enabled = true
@@ -673,8 +690,8 @@ spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D19" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -54, 9, 163)
-light_color = Color(0.738289, 0.598071, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -54, 8.89608, 163)
+light_color = Color(0, 0.823529, 0.823529, 1)
 light_energy = 2.095
 light_bake_mode = 1
 shadow_enabled = true
@@ -682,8 +699,8 @@ spot_range = 4096.0
 spot_angle = 55.9
 
 [node name="SpotLight3D20" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -95, 9, 163)
-light_color = Color(0.738289, 0.598071, 0, 1)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -95, 7.5698, 163)
+light_color = Color(0, 0.823529, 0.823529, 1)
 light_energy = 2.095
 light_bake_mode = 1
 shadow_enabled = true
