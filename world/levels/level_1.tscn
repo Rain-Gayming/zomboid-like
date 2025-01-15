@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://fx1axlaaxtvl"]
+[gd_scene load_steps=21 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://erb7qvubcbe6" path="res://world/textures/door_metal_1_blue_skull.tres" id="6_q3dl2"]
 [ext_resource type="Material" uid="uid://cylqr05ywogtv" path="res://world/textures/door_metal_1_red_skull.tres" id="7_vuqg0"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_k5x7d"]
+[ext_resource type="PackedScene" uid="uid://ck8cd4d0pqbkc" path="res://world/world_environment.tscn" id="10_3iujp"]
 [ext_resource type="PackedScene" uid="uid://dtawguiwcrrbk" path="res://player/player.tscn" id="10_yh73b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pc0nj"]
@@ -59,23 +60,6 @@ tag = 2
 has_been_completed = false
 amount = 0
 run_after_last = false
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r0rth"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-sky_energy_multiplier = 0.0
-ground_bottom_color = Color(0.4383, 0.449628, 0.449629, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_i86jo"]
-sky_material = SubResource("ProceduralSkyMaterial_r0rth")
-
-[sub_resource type="Environment" id="Environment_2jq6p"]
-background_mode = 2
-background_energy_multiplier = 0.2
-sky = SubResource("Sky_i86jo")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_vxamo"]
 
@@ -537,14 +521,7 @@ transform = Transform3D(4.37114e-08, 1.4825e-06, 21.4812, -1.05792e-08, -12.0982
 use_collision = true
 mesh = SubResource("BoxMesh_pc0nj")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
-environment = SubResource("Environment_2jq6p")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment/WorldEnvironment"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.0
-light_bake_mode = 1
-shadow_enabled = true
+[node name="WorldEnvironment" parent="environment" instance=ExtResource("10_3iujp")]
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -767,14 +744,7 @@ shadow_enabled = true
 spot_range = 4096.0
 spot_angle = 55.9
 
-[node name="SpotLight3D25" type="SpotLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -17, 9, 291)
-light_color = Color(0.738289, 0.598071, 0, 1)
-light_energy = 2.095
-light_bake_mode = 1
-shadow_enabled = true
-spot_range = 4096.0
-spot_angle = 55.9
+[node name="SpotLight3D25" parent="lights" instance=ExtResource("10_3iujp")]
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="lights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19, 9, 69)
