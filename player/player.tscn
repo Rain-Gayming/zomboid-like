@@ -46,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84637, -0.0775976)
 shape = SubResource("CapsuleShape3D_uowfd")
 
 [node name="Camera3D" type="Camera3D" parent="player" node_paths=PackedStringArray("player_body")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 3.022, 0.706)
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 2.4849e-08, 3.022, 0.137521)
 size = 25.0
 near = 0.001
 far = 4170.65
