@@ -497,7 +497,6 @@ sprite = ExtResource("8_pl3bb")
 tag = 2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/pillar2/pickup_base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(0, 0.823529, 0.823529, 1)
 
 [node name="ui" type="Control" parent="."]

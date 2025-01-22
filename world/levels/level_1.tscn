@@ -173,7 +173,6 @@ sprite = ExtResource("3_3x4ra")
 tag = 2
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/red_room/pillar/pickup_base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(1, 0, 0, 1)
 
 [node name="blocks" type="Node3D" parent="environment/world/red_room"]
@@ -469,7 +468,6 @@ sprite = ExtResource("8_k5x7d")
 tag = 4
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="environment/world/blue_room/pillar/pickup_base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 light_color = Color(0, 0.823529, 0.823529, 1)
 
 [node name="final_coridoor" type="Node3D" parent="environment/world"]
