@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=47 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
@@ -25,7 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://c8nvwqlnpykf3" path="res://world/models/desks/mouse.tscn" id="25_5ihnm"]
 [ext_resource type="PackedScene" uid="uid://bt4ghgj7glvhd" path="res://world/models/chambers/chamber_broken_1.tscn" id="25_kqxan"]
 [ext_resource type="PackedScene" uid="uid://c4ujm07j5huhc" path="res://world/models/desks/keyboard.tscn" id="25_x8mj7"]
-[ext_resource type="PackedScene" uid="uid://gxa3wp10eh0g" path="res://world/models/desks/lamp.blend" id="26_tl5bf"]
+[ext_resource type="PackedScene" uid="uid://bq5gch6w1x4fv" path="res://world/models/desks/lamp.tscn" id="26_wcjgy"]
+[ext_resource type="PackedScene" uid="uid://cd86wbcjlgwau" path="res://world/models/jeff.blend" id="27_qarn0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5f00d"]
 
@@ -792,7 +793,7 @@ transform = Transform3D(0.5, 2.11758e-22, -0.866025, -7.10543e-15, 1, 1.42109e-1
 transform = Transform3D(0.5, 1.42109e-14, -0.866025, -1.42109e-14, 1, 2.84217e-14, 0.866025, 2.54287e-15, 0.5, 27.0845, 0.5799, 5.88551)
 
 [node name="spawner_0_3" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
-transform = Transform3D(0.866025, 2.54287e-15, 0.5, -2.84217e-14, 1, 5.68434e-14, -0.5, -1.42109e-14, 0.866025, 9.58452, 0.5799, -7.11449)
+transform = Transform3D(0.866025, 2.54287e-15, 0.5, -2.84217e-14, 1, 5.68434e-14, -0.5, -1.42109e-14, 0.866025, 12.0109, 0.5799, -3.54677)
 
 [node name="spawner_1_1" parent="enemy_spawners" instance=ExtResource("1_1ggj3")]
 transform = Transform3D(0.5, 0, -0.866025, -7.10543e-15, 1, 1.42109e-14, 0.866025, -4.56255e-15, 0.5, 25.4845, 0.5799, -40.0145)
@@ -1126,6 +1127,14 @@ transform = Transform3D(-0.647003, 0, -0.762488, 0, 1, 0, 0.762488, 0, -0.647003
 [node name="chamber_broken_1" parent="." instance=ExtResource("25_kqxan")]
 transform = Transform3D(0.421504, 0, -1.16084, 0, 1.235, 0, 1.16084, 0, 0.421504, 13.5641, 0.550001, -9.90836)
 
-[node name="lamp" parent="chamber_broken_1" instance=ExtResource("26_tl5bf")]
-transform = Transform3D(0.276357, 0, 0.761099, 0, 0.809717, 0, -0.761099, 0, 0.276357, 0.0715671, 1.41937, 4.83527)
-visible = false
+[node name="lamp" parent="." instance=ExtResource("26_wcjgy")]
+transform = Transform3D(1.66925, 0, 0.294334, 0, 1.695, 0, -0.294334, 0, 1.66925, 7.34078, 2.30293, -10.6972)
+
+[node name="lamp2" parent="." instance=ExtResource("26_wcjgy")]
+transform = Transform3D(1.02574, 0, -1.3494, 0, 1.695, 0, 1.3494, 0, 1.02574, 11.9847, 2.30293, -10.3922)
+
+[node name="lamp3" parent="." instance=ExtResource("26_wcjgy")]
+transform = Transform3D(-1.34004, 0, 1.03794, 0, 1.695, 0, -1.03794, 0, -1.34004, 7.10858, 2.30293, -5.87357)
+
+[node name="jeff" parent="lamp3" instance=ExtResource("27_qarn0")]
+transform = Transform3D(-0.26322, 0, 0.309347, 0, 0.375, 0, -0.303987, 0, -0.26786, 0.368047, -2.38419e-07, 1.27401)
