@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://csvt7wof4n8qi"]
+
+[ext_resource type="PackedScene" uid="uid://ox6mpt2hvr44" path="res://world/models/desks/computer.blend" id="1_mo3ee"]
+[ext_resource type="Material" uid="uid://dkfsp0nmsm1sw" path="res://world/models/palette.tres" id="2_oyum6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynyf0"]
+size = Vector3(1.53552, 1.3573, 1.17261)
+
+[node name="computer" instance=ExtResource("1_mo3ee")]
+
+[node name="tv" parent="." index="0"]
+material_override = ExtResource("2_oyum6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00164831, 0.626037, -0.271607)
+shape = SubResource("BoxShape3D_ynyf0")

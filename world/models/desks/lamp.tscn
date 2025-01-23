@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq5gch6w1x4fv"]
+
+[ext_resource type="PackedScene" uid="uid://gxa3wp10eh0g" path="res://world/models/desks/lamp.blend" id="1_ylapo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqkhp"]
+size = Vector3(0.634521, 1.19419, 0.949692)
+
+[node name="lamp" instance=ExtResource("1_ylapo")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.766044, 0.642788, 0, -0.642788, -0.766044, 0, 0.953028, 0.306094)
+omni_range = 0.50212
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, -0.766044, 0.642788, 0, -0.642788, -0.766044, 0, 1.1, 0.2)
+spot_range = 4.50511
+spot_angle = 28.0511
+
+[node name="collider" type="StaticBody3D" parent="." index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.593585, 0.129219)
+shape = SubResource("BoxShape3D_rqkhp")

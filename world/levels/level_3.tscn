@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=46 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
@@ -8,17 +8,24 @@
 [ext_resource type="Script" path="res://world/scripts/condition.gd" id="4_vhe78"]
 [ext_resource type="Texture2D" uid="uid://jns6vihsty5i" path="res://world/textures/door_metal_1_red_skull.png" id="5_gdx6s"]
 [ext_resource type="Texture2D" uid="uid://c573gc0i5pyut" path="res://world/textures/door_metal_1_blue_skull.png" id="6_jiv48"]
-[ext_resource type="PackedScene" uid="uid://bpuhjlxj38kf1" path="res://world/blue_light.tscn" id="7_rwvbr"]
-[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="7_wtevh"]
+[ext_resource type="PackedScene" uid="uid://bpuhjlxj38kf1" path="res://world/scenes/blue_light.tscn" id="7_rwvbr"]
+[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/scenes/pickup_base.tscn" id="7_wtevh"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_rlark"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="9_v8vgy"]
-[ext_resource type="PackedScene" uid="uid://c46o08ouab76h" path="res://world/yellow_light.tscn" id="12_5bapw"]
+[ext_resource type="PackedScene" uid="uid://c46o08ouab76h" path="res://world/scenes/yellow_light.tscn" id="12_5bapw"]
 [ext_resource type="PackedScene" uid="uid://bx6ww40vnabbx" path="res://world/levels/red_light.tscn" id="15_8b5iw"]
 [ext_resource type="PackedScene" uid="uid://c2aejhuog02yj" path="res://entities/spawn_region.tscn" id="16_8b0kv"]
 [ext_resource type="ArrayMesh" uid="uid://cqq56noq8d3wl" path="res://entities/graphics/dead_body.obj" id="16_31ci2"]
 [ext_resource type="Material" uid="uid://dqtp0nlhoos05" path="res://world/red.tres" id="17_cas80"]
 [ext_resource type="ArrayMesh" uid="uid://bm5qn6thjktru" path="res://entities/graphics/dead_body_2.obj" id="18_rharx"]
 [ext_resource type="ArrayMesh" uid="uid://cge1qx5blg72c" path="res://entities/graphics/dead_body_3.obj" id="19_8h1bd"]
+[ext_resource type="PackedScene" uid="uid://dlgt4o8go0mrt" path="res://world/models/desks/table.blend" id="20_jbnvn"]
+[ext_resource type="PackedScene" uid="uid://dpkkny4i1iriq" path="res://world/models/desks/table.tscn" id="21_3x1x4"]
+[ext_resource type="PackedScene" uid="uid://csvt7wof4n8qi" path="res://world/models/desks/computer.tscn" id="22_6jabr"]
+[ext_resource type="PackedScene" uid="uid://c8nvwqlnpykf3" path="res://world/models/desks/mouse.tscn" id="25_5ihnm"]
+[ext_resource type="PackedScene" uid="uid://bt4ghgj7glvhd" path="res://world/models/chambers/chamber_broken_1.tscn" id="25_kqxan"]
+[ext_resource type="PackedScene" uid="uid://c4ujm07j5huhc" path="res://world/models/desks/keyboard.tscn" id="25_x8mj7"]
+[ext_resource type="PackedScene" uid="uid://gxa3wp10eh0g" path="res://world/models/desks/lamp.blend" id="26_tl5bf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5f00d"]
 
@@ -1076,7 +1083,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.58
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1443, 7.94063, -0.21063)
 
 [node name="DeadBody" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.185, 0, 0, 0, 1.185, 0, 0, 0, 1.185, 15.2433, 0.710878, -10.8467)
+transform = Transform3D(1.185, 0, 0, 0, 1.185, 0, 0, 0, 1.185, 16.1202, 0.710878, -10.8467)
 mesh = ExtResource("16_31ci2")
 
 [node name="DeadBody2" type="MeshInstance3D" parent="."]
@@ -1087,3 +1094,38 @@ mesh = ExtResource("18_rharx")
 [node name="DeadBody3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.183881, 0, -1.16558, 0, 1.18, 0, 1.16558, 0, -0.183881, 1.52867, 3.73866, 25.4175)
 mesh = ExtResource("19_8h1bd")
+
+[node name="table" parent="." instance=ExtResource("20_jbnvn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1.4794, 0, 1, 0, -4.37114e-08, 10.8471, 0.813383, -9.54762)
+visible = false
+
+[node name="table2" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(-5.43201e-08, 0, -1, 0, 1.43844, 0, 1.2427, 0, -4.37114e-08, 10.7709, 0.550001, -10.0535)
+
+[node name="table3" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1.43844, 0, 3.55271e-15, 0, 1, 7.89393, 0.550001, -7.58061)
+
+[node name="table4" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(1, 0, -2.19051e-15, 0, 1.43844, 0, 3.55271e-15, 0, 0.616572, 7.89393, 0.550001, -10.4494)
+
+[node name="computer" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3225, 2.30292, -10.5112)
+
+[node name="computer2" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(0.884345, 0, 0.466834, 0, 1, 0, -0.466834, 0, 0.884345, 8.7884, 2.30292, -10.1903)
+
+[node name="keyboard2" parent="." instance=ExtResource("25_x8mj7")]
+transform = Transform3D(-0.0135066, -0.000222554, -0.999909, -0.0164752, 0.999864, 0, 0.999773, 0.0164737, -0.0135084, 10.0722, 2.30293, -8.97742)
+
+[node name="mouse" parent="." instance=ExtResource("25_5ihnm")]
+transform = Transform3D(-0.647003, 0, -0.762488, 0, 1, 0, 0.762488, 0, -0.647003, 10.9137, 2.2222, -9.14865)
+
+[node name="mouse2" parent="." instance=ExtResource("25_5ihnm")]
+transform = Transform3D(-0.647003, 0, -0.762488, 0, 1, 0, 0.762488, 0, -0.647003, 10.9137, 2.2222, -9.14865)
+
+[node name="chamber_broken_1" parent="." instance=ExtResource("25_kqxan")]
+transform = Transform3D(0.421504, 0, -1.16084, 0, 1.235, 0, 1.16084, 0, 0.421504, 13.5641, 0.550001, -9.90836)
+
+[node name="lamp" parent="chamber_broken_1" instance=ExtResource("26_tl5bf")]
+transform = Transform3D(0.276357, 0, 0.761099, 0, 0.809717, 0, -0.761099, 0, 0.276357, 0.0715671, 1.41937, 4.83527)
+visible = false

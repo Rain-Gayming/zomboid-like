@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://fx1axlaaxtvl"]
 
 [ext_resource type="Script" path="res://world/scripts/move_conditional.gd" id="1_xfwyn"]
-[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/pickup_base.tscn" id="2_km60l"]
+[ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/scenes/pickup_base.tscn" id="2_km60l"]
 [ext_resource type="Script" path="res://world/scripts/condition.gd" id="2_smafe"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="3_3x4ra"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="4_gvw8e"]
@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://erb7qvubcbe6" path="res://world/textures/door_metal_1_blue_skull.tres" id="6_q3dl2"]
 [ext_resource type="Material" uid="uid://cylqr05ywogtv" path="res://world/textures/door_metal_1_red_skull.tres" id="7_vuqg0"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_k5x7d"]
-[ext_resource type="PackedScene" uid="uid://ck8cd4d0pqbkc" path="res://world/world_environment.tscn" id="10_3iujp"]
+[ext_resource type="PackedScene" uid="uid://ck8cd4d0pqbkc" path="res://world/scenes/world_environment.tscn" id="10_3iujp"]
 [ext_resource type="PackedScene" uid="uid://dtawguiwcrrbk" path="res://player/player.tscn" id="10_yh73b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pc0nj"]

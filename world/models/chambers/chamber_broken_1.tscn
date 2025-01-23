@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt4ghgj7glvhd"]
+
+[ext_resource type="PackedScene" uid="uid://cyeawsq6xngud" path="res://world/models/chambers/chamber_broken_1.blend" id="1_2g1wu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wm4k"]
+size = Vector3(1.50659, 2.53066, 1.45868)
+
+[node name="chamber_broken_1" instance=ExtResource("1_2g1wu")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.26566, 0)
+light_color = Color(0.520053, 0.000193101, 0.520049, 1)
+light_energy = 14.61
+spot_range = 2.94569
+
+[node name="collider" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604889, 0.102966)
+shape = SubResource("BoxShape3D_7wm4k")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59274, 0)
+light_color = Color(0.654555, 0.000319973, 0.654551, 1)
+light_energy = 1.725
+omni_range = 1.2624

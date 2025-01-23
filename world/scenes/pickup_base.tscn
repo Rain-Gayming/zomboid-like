@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://4v7qsky7vifo"]
+
+[ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="1_3w28e"]
+[ext_resource type="Script" path="res://world/scripts/pickup.gd" id="3_1glxa"]
+[ext_resource type="AudioStream" uid="uid://cs77oxew2qig1" path="res://audio/sfx/pickup_1.wav" id="4_eblp8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_afhme"]
+size = Vector3(19.7734, 22.3232, 20.3838)
+
+[node name="pickup_base" type="Node3D" node_paths=PackedStringArray("sprite_display", "pickup_effects")]
+script = ExtResource("3_1glxa")
+sprite_display = NodePath("pickup_base")
+pickup_effects = [NodePath("pickup_effects/audio_pickup_1")]
+
+[node name="collision_area" type="Area3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0.245423, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collision_area"]
+shape = SubResource("BoxShape3D_afhme")
+
+[node name="pickup_effects" type="Node3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 4.17233e-08, 0)
+
+[node name="audio_pickup_1" type="AudioStreamPlayer3D" parent="pickup_effects"]
+stream = ExtResource("4_eblp8")
+max_db = -4.77
+pitch_scale = 0.67
+
+[node name="audio_pickup_2" type="AudioStreamPlayer3D" parent="pickup_effects"]
+stream = ExtResource("4_eblp8")
+max_db = -4.77
+pitch_scale = 0.67
+
+[node name="pickup_base" type="Sprite3D" parent="."]
+transform = Transform3D(0.295, 0, 0, 0, 0.295, 0, 0, 0, 0.295, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_3w28e")
+
+[connection signal="area_entered" from="collision_area" to="." method="_on_collision_area_area_entered"]

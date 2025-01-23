@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bumxou3620jyc"]
+
+[ext_resource type="PackedScene" uid="uid://dq1vxw7xg4voj" path="res://world/models/chambers/chamber.blend" id="1_y301l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wm4k"]
+size = Vector3(1.50659, 2.53066, 1.45868)
+
+[node name="chamber" instance=ExtResource("1_y301l")]
+
+[node name="collider" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00549316, 1.2996, -0.0132141)
+shape = SubResource("BoxShape3D_7wm4k")

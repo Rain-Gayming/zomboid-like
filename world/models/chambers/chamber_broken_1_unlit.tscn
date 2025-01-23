@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b40ixbkgxqhqw"]
+
+[ext_resource type="PackedScene" uid="uid://cyeawsq6xngud" path="res://world/models/chambers/chamber_broken_1.blend" id="1_2awn0"]
+[ext_resource type="Material" uid="uid://dkfsp0nmsm1sw" path="res://world/models/palette.tres" id="2_w0r1l"]
+[ext_resource type="Material" uid="uid://te2nrb0fo0jr" path="res://world/models/palette_translucent.tres" id="3_cacbi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wm4k"]
+size = Vector3(1.50659, 2.53066, 1.45868)
+
+[node name="chamber_broken_1" instance=ExtResource("1_2awn0")]
+
+[node name="palette" parent="." index="0"]
+material_override = ExtResource("2_w0r1l")
+material_overlay = ExtResource("3_cacbi")
+
+[node name="collider" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.604889, 0.102966)
+shape = SubResource("BoxShape3D_7wm4k")

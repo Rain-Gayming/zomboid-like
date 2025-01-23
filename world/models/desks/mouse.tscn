@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8nvwqlnpykf3"]
+
+[ext_resource type="PackedScene" uid="uid://dxv5iy46gouc2" path="res://world/models/desks/mouse.blend" id="1_7r2o6"]
+[ext_resource type="Material" uid="uid://dkfsp0nmsm1sw" path="res://world/models/palette.tres" id="2_accxi"]
+
+[node name="mouse" instance=ExtResource("1_7r2o6")]
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_accxi")
