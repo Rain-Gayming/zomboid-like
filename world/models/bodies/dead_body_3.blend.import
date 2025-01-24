@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvxaw16akkk4e"
-path="res://.godot/imported/dead_body_2.blend-9e5bc200588e7bbc3f231f7ac03cfebb.scn"
+uid="uid://bcl40phrqsjpl"
+path="res://.godot/imported/dead_body_3.blend-687d9c1e28483fb82310387068a5a408.scn"
 
 [deps]
 
-source_file="res://entities/graphics/dead_body_2.blend"
-dest_files=["res://.godot/imported/dead_body_2.blend-9e5bc200588e7bbc3f231f7ac03cfebb.scn"]
+source_file="res://world/models/bodies/dead_body_3.blend"
+dest_files=["res://.godot/imported/dead_body_3.blend-687d9c1e28483fb82310387068a5a408.scn"]
 
 [params]
 

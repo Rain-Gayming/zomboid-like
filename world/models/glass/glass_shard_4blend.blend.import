@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bkyqjwsquqcib"
-path="res://.godot/imported/dead_body.blend-888ed426659582137edd551f75ed1ccc.scn"
+uid="uid://b7muvx7vh4a27"
+path="res://.godot/imported/glass_shard_4blend.blend-fd390a501c909faf2ed270112ca01b0a.scn"
 
 [deps]
 
-source_file="res://entities/graphics/dead_body.blend"
-dest_files=["res://.godot/imported/dead_body.blend-888ed426659582137edd551f75ed1ccc.scn"]
+source_file="res://world/models/glass/glass_shard_4blend.blend"
+dest_files=["res://.godot/imported/glass_shard_4blend.blend-fd390a501c909faf2ed270112ca01b0a.scn"]
 
 [params]
 

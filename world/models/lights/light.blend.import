@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c338ao4pglwha"
-path="res://.godot/imported/light.blend-053dc66baced37672cfea43343735e93.scn"
+path="res://.godot/imported/light.blend-6f7d9c5d216c8d828a848e73042b260a.scn"
 
 [deps]
 
-source_file="res://entities/graphics/light.blend"
-dest_files=["res://.godot/imported/light.blend-053dc66baced37672cfea43343735e93.scn"]
+source_file="res://world/models/lights/light.blend"
+dest_files=["res://.godot/imported/light.blend-6f7d9c5d216c8d828a848e73042b260a.scn"]
 
 [params]
 

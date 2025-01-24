@@ -99,7 +99,6 @@ transform = Transform3D(1, 0, 0, 0, 0.856889, 0.515502, 0, -0.515502, 0.856889, 
 lod_bias = 0.001
 shaded = true
 no_depth_test = true
-alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gu62l")
 animation = &"shotgun_idle"
@@ -112,10 +111,13 @@ frame_progress = 0.00768893
 [node name="shotgun_shoot_3" type="AudioStreamPlayer3D" parent="audio/shooting"]
 transform = Transform3D(3.33333, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 stream = ExtResource("21_0p3q4")
+volume_db = -25.43
+max_db = -2.762
 
 [node name="reload" type="Node3D" parent="audio"]
 
 [node name="shotgun_reload" type="AudioStreamPlayer3D" parent="audio/reload"]
 transform = Transform3D(3.33333, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 stream = ExtResource("22_6uygx")
-max_db = -2.0
+volume_db = -25.43
+max_db = -2.762
