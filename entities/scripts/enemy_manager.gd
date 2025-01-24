@@ -21,16 +21,16 @@ var navigationserver_region_rid: RID = get_rid()
 @export var wait_time: float
 @export var wait_timer: float
 
+@export var activated: bool
+
 
 func _ready():
-	wait_timer = wait_time
 	SignalManager.collect_tag.connect(return_tag)
 	SignalManager.emit_return_tag(tag)
 	target = get_tree().get_nodes_in_group("player")[0]
 
-func _physics_process(delta):
-	wait_timer -= delta
-	if target != null and wait_timer <= 0:
+func _physics_process(_delta):
+	if target != null and activated:
 		#rotates the enemy to the target+
 		look_at(target.global_position, -transform.basis.y)
 
@@ -64,7 +64,7 @@ func _physics_process(delta):
 			print("moving backwards")
 			var direction = position.direction_to(target.position)
 			velocity = -direction * -move_speed
-		else: 
+		else:
 			velocity = Vector3.ZERO
 		move_and_slide()
 
@@ -77,4 +77,3 @@ func take_damage(damage: float):
 	if current_health <= 0:
 		self.queue_free()
 		SignalManager.emit_update_tag(tag)
-

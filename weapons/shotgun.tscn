@@ -98,22 +98,12 @@ damage = 30.0
 transform = Transform3D(1, 0, 0, 0, 0.856889, 0.515502, 0, -0.515502, 0.856889, 0.211421, 0.205804, 0)
 lod_bias = 0.001
 shaded = true
+no_depth_test = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gu62l")
 animation = &"shotgun_idle"
 frame_progress = 0.00768893
-
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.856889, 0.515502, 0, -0.515502, 0.856889, 0.211421, -0.0711115, -0.379697)
-cast_shadow = 3
-lod_bias = 0.001
-shaded = true
-alpha_cut = 2
-texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_gu62l")
-animation = &"shotgun_idle"
-frame_progress = 0.648177
 
 [node name="audio" type="Node3D" parent="."]
 
