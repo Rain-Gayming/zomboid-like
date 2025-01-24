@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://0r1nwjmigiu5"]
+
+[ext_resource type="Texture2D" uid="uid://cykaqfluq5s6n" path="res://player/flashlight.png" id="1_27vuu"]
+
+[node name="flashlight" type="Node3D"]
+
+[node name="flashlight" type="Sprite3D" parent="."]
+transform = Transform3D(-1.90718e-09, 0, -0.12, 0, 0.12, 0, 0.12, 0, -1.90718e-09, 0.994521, 2.902, -0.777)
+top_level = true
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_27vuu")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="flashlight"]
+transform = Transform3D(8.33333, 0, -3.89031e-06, 0, 8.33333, 0, 3.89031e-06, 0, 8.33333, 2.2, 0.041666, -0.130612)
+light_color = Color(0.737255, 0.6, 0, 1)
+light_energy = 5.194
+shadow_enabled = true
+spot_range = 1500.0
+spot_angle = 6.31
+
+[node name="OmniLight3D" type="OmniLight3D" parent="flashlight"]
+transform = Transform3D(8.33333, 0, -7.10543e-14, 0, 8.33333, 0, 7.10543e-14, 0, 8.33333, 2.64221, 0.906824, 0.0891485)
+light_color = Color(0.737255, 0.6, 0, 1)
+light_energy = 0.338
+shadow_enabled = true
+omni_range = 0.192973

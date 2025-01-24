@@ -57,7 +57,7 @@ player_body = NodePath("..")
 [node name="shotgun" parent="player/Camera3D" node_paths=PackedStringArray("player", "shoot_from") instance=ExtResource("5_uivoq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14859, -0.533362, -2.0621)
 player = NodePath("../..")
-loudness = 45.0
+loudness = 1.0
 shoot_from = NodePath("../RayCast3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="player/Camera3D"]
@@ -66,26 +66,26 @@ target_position = Vector3(0, -11.405, 0)
 
 [node name="flashlight" type="Node3D" parent="player/Camera3D"]
 
-[node name="flashlight" type="Sprite3D" parent="player/Camera3D/flashlight"]
-transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -0.777, -0.12, -0.857)
-shaded = true
-texture_filter = 0
-texture = ExtResource("6_ea220")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="player/Camera3D/flashlight/flashlight"]
-transform = Transform3D(8.33333, 0, -3.89031e-06, 0, 8.33333, 0, 3.89031e-06, 0, 8.33333, 2.2, 0.041666, -0.130612)
+[node name="SpotLight3D" type="SpotLight3D" parent="player/Camera3D/flashlight"]
+transform = Transform3D(1, 0, -4.66838e-07, 0, 1, 0, 4.66838e-07, 0, 1, -0.513, -0.115, -0.872673)
 light_color = Color(0.737255, 0.6, 0, 1)
 light_energy = 5.194
 shadow_enabled = true
 spot_range = 1500.0
 spot_angle = 6.31
 
-[node name="OmniLight3D" type="OmniLight3D" parent="player/Camera3D/flashlight/flashlight"]
-transform = Transform3D(8.33333, 0, -7.10543e-14, 0, 8.33333, 0, 7.10543e-14, 0, 8.33333, 2.64221, 0.906824, 0.0891485)
+[node name="OmniLight3D" type="OmniLight3D" parent="player/Camera3D/flashlight"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -0.459935, -0.0111811, -0.846302)
 light_color = Color(0.737255, 0.6, 0, 1)
 light_energy = 0.338
 shadow_enabled = true
 omni_range = 0.192973
+
+[node name="flashlight" type="Sprite3D" parent="player/Camera3D/flashlight"]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -0.777, -0.12, -0.857)
+shaded = true
+texture_filter = 0
+texture = ExtResource("6_ea220")
 
 [node name="player_area" type="Area3D" parent="player" groups=["player"]]
 

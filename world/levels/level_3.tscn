@@ -79,7 +79,7 @@ texture_filter = 0
 [sub_resource type="Resource" id="Resource_hthht"]
 script = ExtResource("4_vhe78")
 condition = 1
-tag = 2
+tag = 15
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -125,7 +125,7 @@ run_after_last = false
 [sub_resource type="Resource" id="Resource_yduk8"]
 script = ExtResource("4_vhe78")
 condition = 1
-tag = 2
+tag = 15
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -809,7 +809,7 @@ mesh = SubResource("BoxMesh_dgbvd")
 [node name="pickup_base" parent="nav_region/environment/world/pillar2" instance=ExtResource("7_wtevh")]
 transform = Transform3D(0.589185, 0, 0, 0, 0.19478, 0, 0, 0, 0.56205, 0, 0.656322, 0)
 sprite = ExtResource("9_v8vgy")
-tag = 2
+tag = 15
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="nav_region/environment/world/pillar2/pickup_base"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0972134, 0.090086, 0.23851)
@@ -1004,7 +1004,7 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 use_collision = true
 mesh = SubResource("BoxMesh_i24u2")
 script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_axxbh"), SubResource("Resource_yduk8")])
+conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_yduk8")])
 move_to = NodePath("../move_to")
 start_at = NodePath("../move_to")
 
@@ -1030,35 +1030,17 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 
 [node name="SpotLight3D" parent="lights" instance=ExtResource("12_5bapw")]
 
-[node name="SpotLight3D18" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 8.04193, -26.0254)
-
-[node name="SpotLight3D19" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 8.04193, -34.0254)
-
 [node name="SpotLight3D20" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7, 8.04193, -41.0254)
+transform = Transform3D(1, 0, 0, 0, -0.632394, 0.774647, 0, -0.774647, -0.632394, 9.12443, 6.77681, -39.5694)
 
 [node name="SpotLight3D4" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 8.04193, -19.0254)
-
-[node name="SpotLight3D6" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48, 8.04193, -32.0254)
-
-[node name="SpotLight3D7" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 8.04193, -32.0254)
+transform = Transform3D(0.817225, 0.289856, -0.498123, 0.576318, -0.411019, 0.706343, 0, -0.864319, -0.502945, 22, 7.19338, -19.0254)
 
 [node name="SpotLight3D8" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 8.04193, -3.02538)
-
-[node name="SpotLight3D9" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 45, 8.04193, 9.97462)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 8.04193, -24.3039)
 
 [node name="SpotLight3D10" parent="lights" instance=ExtResource("12_5bapw")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57, 8.04193, 9.97462)
-
-[node name="SpotLight3D11" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 67, 8.04193, 9.97462)
 
 [node name="SpotLight3D14" parent="lights" instance=ExtResource("12_5bapw")]
 transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 27.1241, 8.04193, 26.2554)
@@ -1103,9 +1085,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.673
 
 [node name="SpotLight3D" parent="." instance=ExtResource("15_8b5iw")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.948744, 7.94063, 25.7894)
-
-[node name="SpotLight3D2" parent="." instance=ExtResource("15_8b5iw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.5844, 7.94063, 18.7894)
 
 [node name="SpotLight3D3" parent="." instance=ExtResource("15_8b5iw")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.1443, 7.94063, -0.21063)

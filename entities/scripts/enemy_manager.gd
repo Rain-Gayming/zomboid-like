@@ -68,11 +68,13 @@ func _physics_process(_delta):
 			velocity = Vector3.ZERO
 		move_and_slide()
 
+
 func return_tag():
 	SignalManager.emit_return_tag(tag)
 
 func take_damage(damage: float):
 	current_health -= damage
+	SignalManager.emit_spawn(tag)
 
 	if current_health <= 0:
 		self.queue_free()
