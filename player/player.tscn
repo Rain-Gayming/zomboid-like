@@ -25,6 +25,7 @@ height = 3.68576
 size = Vector3(1, 4.27051, 1)
 
 [node name="player" type="Node3D"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 
 [node name="player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
@@ -72,7 +73,7 @@ light_color = Color(0.737255, 0.6, 0, 1)
 light_energy = 5.194
 shadow_enabled = true
 spot_range = 1500.0
-spot_angle = 6.31
+spot_angle = 15.8643
 
 [node name="OmniLight3D" type="OmniLight3D" parent="player/Camera3D/flashlight"]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, -0.459935, -0.0111811, -0.846302)

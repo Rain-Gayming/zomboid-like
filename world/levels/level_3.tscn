@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cobaivdrvc1o1"]
+[gd_scene load_steps=57 format=3 uid="uid://cobaivdrvc1o1"]
 
 [ext_resource type="PackedScene" uid="uid://dyieebvqet2es" path="res://entities/spawner.tscn" id="1_1ggj3"]
 [ext_resource type="Material" uid="uid://biqxo24gmgt04" path="res://world/textures/new_standard_material_3d.tres" id="1_4ihrr"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://world/scripts/condition.gd" id="4_vhe78"]
 [ext_resource type="Texture2D" uid="uid://jns6vihsty5i" path="res://world/textures/door_metal_1_red_skull.png" id="5_gdx6s"]
 [ext_resource type="Texture2D" uid="uid://c573gc0i5pyut" path="res://world/textures/door_metal_1_blue_skull.png" id="6_jiv48"]
-[ext_resource type="PackedScene" uid="uid://bpuhjlxj38kf1" path="res://world/models/lights/blue_light.tscn" id="7_rwvbr"]
 [ext_resource type="PackedScene" uid="uid://4v7qsky7vifo" path="res://world/scenes/pickup_base.tscn" id="7_wtevh"]
 [ext_resource type="Texture2D" uid="uid://y3am8nmsdk5c" path="res://world/textures/skull_blue.png" id="8_rlark"]
 [ext_resource type="Texture2D" uid="uid://dmm1kjjo4muuy" path="res://world/textures/skull_red.png" id="9_v8vgy"]
@@ -33,6 +32,12 @@
 [ext_resource type="PackedScene" uid="uid://cyeawsq6xngud" path="res://world/models/chambers/chamber_broken_1.blend" id="30_wrxwf"]
 [ext_resource type="PackedScene" uid="uid://b74e0ofva7cmv" path="res://world/models/lights/purple_light.tscn" id="31_foaki"]
 [ext_resource type="PackedScene" uid="uid://wkisjvsdq61" path="res://world/models/shower.blend" id="32_d6ki3"]
+[ext_resource type="ArrayMesh" uid="uid://8i1ugi86jv4u" path="res://world/models/bodies/dead_body_4.obj" id="33_bvfym"]
+[ext_resource type="PackedScene" uid="uid://gxa3wp10eh0g" path="res://world/models/desks/lamp.blend" id="34_nyv4g"]
+[ext_resource type="ArrayMesh" uid="uid://cuodxak321nwl" path="res://world/models/bodies/dead_body_8.obj" id="35_q5wmg"]
+[ext_resource type="ArrayMesh" uid="uid://ctfyjxn4kgq3b" path="res://world/models/bodies/dead_body_5.obj" id="36_tqtmw"]
+[ext_resource type="PackedScene" uid="uid://belmbsitphhdb" path="res://world/models/tools/scalple.blend" id="37_bby4m"]
+[ext_resource type="PackedScene" uid="uid://dhg4c8k4lrqw" path="res://world/models/tools/tweeser.blend" id="38_rq0w7"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5f00d"]
 
@@ -84,10 +89,10 @@ has_been_completed = false
 amount = 0
 run_after_last = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td15d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijkkt"]
 albedo_texture = ExtResource("6_jiv48")
-uv1_scale = Vector3(2.84, 2.08, 2.08)
-uv1_offset = Vector3(-0.91, -0.065, 0)
+uv1_scale = Vector3(2.775, 2.08, 2.08)
+uv1_offset = Vector3(-0.89, -0.065, 0)
 texture_filter = 0
 
 [sub_resource type="Resource" id="Resource_t4phm"]
@@ -97,12 +102,6 @@ tag = 4
 has_been_completed = false
 amount = 0
 run_after_last = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijkkt"]
-albedo_texture = ExtResource("6_jiv48")
-uv1_scale = Vector3(2.775, 2.08, 2.08)
-uv1_offset = Vector3(-0.89, -0.065, 0)
-texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_i24u2"]
 
@@ -118,14 +117,6 @@ run_after_last = false
 script = ExtResource("4_vhe78")
 condition = 0
 tag = 0
-has_been_completed = false
-amount = 0
-run_after_last = false
-
-[sub_resource type="Resource" id="Resource_yduk8"]
-script = ExtResource("4_vhe78")
-condition = 1
-tag = 15
 has_been_completed = false
 amount = 0
 run_after_last = false
@@ -283,8 +274,13 @@ transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block10" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 12.6525, 5.275, 11.9561)
+[node name="block11" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 22.6525, 5.275, -11.7439)
+use_collision = true
+mesh = SubResource("BoxMesh_y6i72")
+
+[node name="block22" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -30.086, 1.48943e-09, 10.9, 3.40373e-07, 1, -1.62348e-08, -6.53385e-07, 21.6525, 5.275, 11.9561)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -330,11 +326,6 @@ mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block33" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
 transform = Transform3D(-0.707107, 1.23315e-07, -5.72354, 9.05292e-09, 10.9, 5.62276e-08, 0.707107, -1.62348e-08, -5.72355, 34.157, 5.275, 26.9568)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block11" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 31.096, 5.275, 11.9561)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -553,33 +544,13 @@ transform = Transform3D(5.96046e-08, -4.76454e-07, 8.3918, -4.07325e-08, 10.9, 3
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block88" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -4.43984e-07, 4.33088e-07, -4.07325e-08, 10.9, 2.82167e-07, -1.58933e-08, 4.76454e-07, -6.45523, 2.36697, 5.275, 20.1418)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block89" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -4.43984e-07, 4.33088e-07, -4.07325e-08, 10.9, 2.82167e-07, -1.58933e-08, 4.76454e-07, -6.45523, 2.36697, 5.275, 26.5418)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block90" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -1.23303, 5.275, 29.2418)
+transform = Transform3D(-1, -4.43984e-07, 8.22867e-07, -4.07325e-08, 10.9, 5.36117e-07, -1.58933e-08, 4.76454e-07, -12.2649, 2.36697, 5.275, 23.5418)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block91" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -7.73303, 5.275, 29.2418)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block92" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1.20201e-07, -4.76454e-07, 6.45523, -4.07325e-08, 10.9, 2.82167e-07, -1, -4.43984e-07, 4.33089e-07, -14.233, 5.275, 29.2418)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block93" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 6.73808e-07, -3.85793e-07, -6.18172e-08, 10.9, 6.64933e-14, 1.35103e-07, -7.84805e-14, 7.53722, -17.033, 5.275, 25.1418)
+transform = Transform3D(1.20201e-07, -4.76454e-07, 22.4974, -4.07325e-08, 10.9, 9.83394e-07, -1, -4.43984e-07, 1.50938e-06, -7.73303, 5.275, 29.2418)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -594,7 +565,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block96" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 9.20438e-07, -2.04669e-06, -8.44439e-08, 10.9, 1.80291e-13, 1.79806e-07, 9.40589e-14, 18.6298, -17.0294, 5.275, 12.0418)
+transform = Transform3D(1, 9.20438e-07, -5.31006e-06, -8.44439e-08, 10.9, 4.67758e-13, 1.79806e-07, 9.40589e-14, 48.3343, -17.0294, 5.275, 12.0418)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -603,18 +574,8 @@ transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9,
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block98" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9, 5.05997e-14, 1, 9.20438e-07, -1.38676e-06, -8.83303, 5.275, -2.95817)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block99" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-2.2451e-07, -2.29773e-13, -6.45523, -8.44439e-08, 10.9, 5.05996e-14, 1, 9.20438e-07, -1.38676e-06, -15.233, 5.275, -2.95818)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block100" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20439e-07, 1.74439e-06, -8.44439e-08, 10.9, 5.05997e-14, -2.54312e-07, -3.86092e-13, -6.45523, -17.033, 5.275, -0.458175)
+transform = Transform3D(-2.2451e-07, -2.29773e-13, -12.2649, -8.44439e-08, 10.9, 9.61392e-14, 1, 9.20438e-07, -2.63484e-06, -12.233, 5.275, -2.95818)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -623,18 +584,8 @@ transform = Transform3D(5.96046e-08, 1.42109e-14, 14.6857, -8.44439e-08, 10.9, -
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block64" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1.47027e-07, -1.72127e-13, -9.22176, -8.44439e-08, 10.9, -1.6959e-14, 1, 9.20438e-07, -9.96927e-07, 45.996, 5.275, -35.2439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block66" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1.47027e-07, -1.72127e-13, -11.1583, -8.44439e-08, 10.9, -2.05204e-14, 1, 9.20438e-07, -1.20628e-06, 56.196, 5.275, -35.2439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block69" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 7.76173e-07, -8.44439e-08, 10.9, -9.40207e-15, -1.90739e-07, -2.12361e-13, -5.11254, 61.596, 5.275, -32.8788)
+transform = Transform3D(-1.47027e-07, -1.72127e-13, -20.866, -8.44439e-08, 10.9, -3.83731e-14, 1, 9.20438e-07, -2.25574e-06, 51.6805, 5.275, -35.2439)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -643,33 +594,13 @@ transform = Transform3D(-1.47027e-07, -1.72127e-13, -9.22176, -8.44439e-08, 10.9
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block68" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -25.7439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block70" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 61.596, 5.275, -25.7439)
+transform = Transform3D(-1, -9.20438e-07, 5.88008e-06, -8.4444e-08, 10.9, -7.12278e-14, -1.90739e-07, -2.12361e-13, -38.7314, 61.596, 5.275, -21.7439)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block71" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -16.5439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block72" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 61.596, 5.275, -16.5439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block73" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 51.096, 5.275, -7.3439)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block74" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, -9.20438e-07, 1.40002e-06, -8.44439e-08, 10.9, -1.6959e-14, -1.90739e-07, -2.12361e-13, -9.22176, 61.596, 5.275, -7.3439)
+transform = Transform3D(-1, -9.20438e-07, 4.31206e-06, -8.44439e-08, 10.9, -5.22337e-14, -1.90739e-07, -2.12361e-13, -28.403, 51.096, 5.275, -16.1313)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -684,7 +615,7 @@ use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block12" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 31.096, 5.275, -11.5439)
+transform = Transform3D(-1.49012e-08, 1.23315e-07, -11.5272, 1.48943e-09, 10.9, 1.30411e-07, 1, -1.62348e-08, -2.50339e-07, 31.096, 5.275, -11.7494)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -703,13 +634,8 @@ transform = Transform3D(-1.49012e-08, 4.60219e-07, -11.5272, 5.50247e-08, 10.9, 
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block17" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, 4.60219e-07, 7.5421e-07, 4.22219e-08, 10.9, -6.34281e-07, -5.86125e-08, -5.99769e-07, -11.5272, 2.99435, 5.275, -28.2711)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block20" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(-1, 4.60219e-07, 7.5421e-07, 4.22219e-08, 10.9, -6.34281e-07, -5.86125e-08, -5.99769e-07, -11.5272, 2.99435, 5.275, -39.7983)
+transform = Transform3D(-1, 4.60219e-07, 2.03637e-06, 4.22219e-08, 10.9, -1.71256e-06, -5.86125e-08, -5.99769e-07, -31.1234, 2.99435, 5.275, -33.7983)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -728,58 +654,28 @@ transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, -5.6, 5.275, 5.50917
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block7" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, -9.49566)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
 [node name="block8" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 6.4, 5.275, 9.71636)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 6.64187, 6.4, 5.275, 9.35694)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
-[node name="block6" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.19566, 6.4, 5.175, 5.85977)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block24" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.19566, 6.4, 5.175, -5.64023)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block22" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1.2, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 36.4, 5.275, -4.00651)
+[node name="block10" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 6.64187, 6.4, 5.275, -8.98519)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block23" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1.2, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 36.4, 5.275, -9.49566)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block30" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 2.74457, 36.4, 5.275, -0.334727)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block26" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -37.4903)
-use_collision = true
-mesh = SubResource("BoxMesh_y6i72")
-
-[node name="block27" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -42.9795)
+transform = Transform3D(1.2, 0, 0, 0, 10.9, 0, 0, 0, 25.2501, 36.4, 5.275, -0.49566)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block28" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 5.48915, 41, 5.275, -23.7674)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 9.88047, 41.0005, 5.29466, -25.4342)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
 [node name="block29" type="CSGMesh3D" parent="nav_region/environment/world/blocks"]
-transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 3.8424, 41, 5.275, -28.424)
+transform = Transform3D(1, 0, 0, 0, 10.9, 0, 0, 0, 9.88047, 41.001, 5.295, -39.575)
 use_collision = true
 mesh = SubResource("BoxMesh_y6i72")
 
@@ -815,9 +711,6 @@ tag = 15
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0972134, 0.090086, 0.23851)
 light_color = Color(1, 0, 0, 1)
 light_energy = 0.479
-
-[node name="SpotLight3D" parent="nav_region/environment/world" instance=ExtResource("7_rwvbr")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.963, 8.07699, -38.1627)
 
 [node name="computers" type="Node3D" parent="nav_region"]
 
@@ -937,16 +830,6 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 [node name="door4" type="Node3D" parent="doors"]
 transform = Transform3D(-0.234897, -1.82678e-06, 5.41567e-06, 3.54684e-08, -12.0982, 2.57472e-06, 8.21412e-08, 2.01133e-06, 15.487, 36.2, 4.9, 7.1)
 
-[node name="door" type="CSGMesh3D" parent="doors/door4" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(3.58487, 8.54774e-06, -1.08448e-05, 3.64386e-05, -0.840934, 6.24356e-08, -5.43873e-05, -7.35806e-08, -0.714823, 0.776307, 0.0600291, -0.0451993)
-use_collision = true
-mesh = SubResource("BoxMesh_0gf2b")
-material = SubResource("StandardMaterial3D_td15d")
-script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_t4phm")])
-move_to = NodePath("../move_to")
-start_at = NodePath("../move_to")
-
 [node name="move_to" type="Node3D" parent="doors/door4"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
@@ -999,15 +882,6 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 [node name="door6" type="Node3D" parent="doors"]
 transform = Transform3D(-6.9231e-08, -1.4825e-06, -12.3896, 3.10845e-08, -12.0982, 1.51821e-06, -0.355565, -1.05766e-06, 2.41234e-06, 21.7, 6.5, 12.1)
 
-[node name="door" type="CSGMesh3D" parent="doors/door6" node_paths=PackedStringArray("move_to", "start_at")]
-transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, 0, 0)
-use_collision = true
-mesh = SubResource("BoxMesh_i24u2")
-script = ExtResource("3_gco0d")
-conditions = Array[ExtResource("4_vhe78")]([SubResource("Resource_yduk8")])
-move_to = NodePath("../move_to")
-start_at = NodePath("../move_to")
-
 [node name="move_to" type="Node3D" parent="doors/door6"]
 transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55271e-15, 1, 0, -1.24812, 0)
 
@@ -1030,26 +904,11 @@ transform = Transform3D(1, 0, 4.54747e-13, 3.72908e-17, 1, -2.84217e-14, 0, 3.55
 
 [node name="SpotLight3D" parent="lights" instance=ExtResource("12_5bapw")]
 
-[node name="SpotLight3D20" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -0.632394, 0.774647, 0, -0.774647, -0.632394, 9.12443, 6.77681, -39.5694)
-
-[node name="SpotLight3D4" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(0.817225, 0.289856, -0.498123, 0.576318, -0.411019, 0.706343, 0, -0.864319, -0.502945, 22, 7.19338, -19.0254)
-
-[node name="SpotLight3D8" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 56, 8.04193, -24.3039)
-
 [node name="SpotLight3D10" parent="lights" instance=ExtResource("12_5bapw")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 57, 8.04193, 9.97462)
 
 [node name="SpotLight3D14" parent="lights" instance=ExtResource("12_5bapw")]
 transform = Transform3D(0.707107, -0.707107, -3.09086e-08, 0, -4.37114e-08, 1, -0.707107, -0.707107, -3.09086e-08, 27.1241, 8.04193, 26.2554)
-
-[node name="SpotLight3D16" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 48, 8.04193, 75.9746)
-
-[node name="SpotLight3D17" parent="lights" instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 59, 8.04193, 75.9746)
 
 [node name="spawn_regions" type="Node3D" parent="."]
 
@@ -1079,9 +938,6 @@ tag = 3
 [node name="spawn_region_3_2" parent="spawn_regions" instance=ExtResource("16_8b0kv")]
 transform = Transform3D(9.17939e-08, 4.37114e-08, 1, -3.0598e-08, 1, -4.37114e-08, -0.7, -4.37114e-08, 1.31134e-07, 43, 3, 34.2169)
 tag = 3
-
-[node name="SpotLight3D7" parent="." instance=ExtResource("12_5bapw")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.6736, 8.04193, 3.97462)
 
 [node name="SpotLight3D" parent="." instance=ExtResource("15_8b5iw")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.948744, 7.94063, 25.7894)
@@ -1118,8 +974,20 @@ transform = Transform3D(1, 0, -2.19051e-15, 0, 1.43844, 0, 3.55271e-15, 0, 0.616
 [node name="computer" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3225, 2.30292, -10.5112)
 
+[node name="OmniLight3D3" type="OmniLight3D" parent="computer"]
+transform = Transform3D(0.861558, 0, -0.507659, 0, 1, 0, 0.507659, 0, 0.861558, 0.0148602, 0.776654, 0.446431)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 1.851
+omni_range = 0.969149
+
 [node name="computer2" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(0.884345, 0, 0.466834, 0, 1, 0, -0.466834, 0, 0.884345, 8.7884, 2.30292, -10.1903)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="computer2"]
+transform = Transform3D(0.524922, 0, -0.85115, 0, 1, 0, 0.85115, 0, 0.524922, 0.0814762, 0.776654, 0.535958)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 1.851
+omni_range = 0.969149
 
 [node name="keyboard2" parent="." instance=ExtResource("25_x8mj7")]
 transform = Transform3D(-0.0135066, -0.000222554, -0.999909, -0.0164752, 0.999864, 0, 0.999773, 0.0164737, -0.0135084, 10.0722, 2.30293, -8.97742)
@@ -1185,7 +1053,13 @@ transform = Transform3D(1.81378, 0, 0.842736, 0, 2, 0, -0.842736, 0, 1.81378, 5.
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 11.8502, 2.09828, -23.9031)
 
 [node name="computer4" parent="." instance=ExtResource("22_6jabr")]
-transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 11.8502, 4.09828, -23.9031)
+transform = Transform3D(-1.49993, 0.0140846, 2.26484e-07, 0.0140846, 1.49993, -2.12672e-09, -2.26494e-07, 0, -1.5, 11.8502, 4.09828, -23.9031)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="computer4"]
+transform = Transform3D(-0.666637, 0.00625982, -1.00664e-07, 0.00625982, 0.666637, -1.49458e-17, 1.0066e-07, -9.45208e-10, -0.666667, 0.0841703, 0.631744, 0.465507)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 5.471
+omni_range = 1.52599
 
 [node name="computer5" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 11.8502, 6.09828, -23.9031)
@@ -1196,6 +1070,42 @@ transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 
 [node name="computer7" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 9.54681, 4.09828, -23.9031)
 
+[node name="OmniLight3D6" type="OmniLight3D" parent="computer7"]
+transform = Transform3D(-0.666667, -1.42716e-16, -1.00664e-07, -1.42716e-16, 0.666667, 1.4803e-16, 1.00664e-07, 1.4803e-16, -0.666667, -0.0483871, 1.91735, 0.51422)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 2.933
+omni_range = 1.52599
+
+[node name="SpotLight3D" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-0.666667, 1.00664e-07, 4.40016e-15, 0, -2.91409e-08, 0.666667, 1.00664e-07, 0.666667, 2.91409e-08, 0.936305, 2.5415, 6.84774)
+
+[node name="SpotLight3D2" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -1.06369, 2.5415, 10.8477)
+
+[node name="SpotLight3D3" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -9.06369, 2.5415, 10.8477)
+
+[node name="SpotLight3D4" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -16.397, 2.5415, 10.8477)
+
+[node name="SpotLight3D10" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -16.397, 2.5415, 0.847741)
+
+[node name="SpotLight3D5" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -14.397, 2.5415, -22.4856)
+
+[node name="SpotLight3D6" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -7.73037, 2.5415, -9.81893)
+
+[node name="SpotLight3D7" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -15.0637, 2.5415, -9.81893)
+
+[node name="SpotLight3D8" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -1.73037, 2.5415, -9.81893)
+
+[node name="SpotLight3D9" parent="computer7" instance=ExtResource("31_foaki")]
+transform = Transform3D(-7.15231e-08, -0.666667, -2.91409e-08, 3.76459e-22, -2.91409e-08, 0.666667, -0.666667, 7.15231e-08, 3.12637e-15, -1.73037, 2.5415, -20.4856)
+
 [node name="computer8" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 9.54681, 6.09828, -23.9031)
 
@@ -1204,6 +1114,12 @@ transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 
 
 [node name="computer10" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 7.36502, 4.09828, -23.9031)
+
+[node name="q" type="OmniLight3D" parent="computer10"]
+transform = Transform3D(-0.666667, -1.42716e-16, -1.00664e-07, -1.42716e-16, 0.666667, 1.4803e-16, 1.00664e-07, 1.4803e-16, -0.666667, 0.00221443, 0.653796, 0.514218)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 2.933
+omni_range = 1.52599
 
 [node name="computer11" parent="." instance=ExtResource("22_6jabr")]
 transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 7.36502, 6.09828, -23.9031)
@@ -1291,6 +1207,106 @@ mesh = ExtResource("18_rharx")
 transform = Transform3D(0.838518, 0, -0.544873, 0, 1, 0, 0.544873, 0, 0.838518, 56.1612, 0.549999, 46.2092)
 mesh = ExtResource("16_31ci2")
 
-[node name="SpotLight3D6" parent="." instance=ExtResource("12_5bapw")]
-transform = Transform3D(-2.24744e-08, -0.87412, -0.48571, -3.74911e-08, -0.48571, 0.87412, -1, 3.78552e-08, -2.18557e-08, 30.0316, 7.27381, -4.01886)
-light_energy = 0.0
+[node name="table7" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 34.6227, 0.550002, -8.97898)
+
+[node name="table8" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 34.6227, 0.550002, -4.62841)
+
+[node name="table10" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(0.00277064, -0.0189441, -2.18896, 0.0104611, 1.26019, -0.0328883, 1.93538, -0.00678441, 0.00331144, 29.8227, 0.550002, 1.17159)
+
+[node name="DeadBody4" type="MeshInstance3D" parent="table10"]
+transform = Transform3D(0.456873, -0.00725454, -0.000579281, -0.00377071, 0.792954, 0.0134849, 0.000838371, -0.0244855, 0.51652, 0.0352934, 1.21591, 0.478809)
+mesh = ExtResource("33_bvfym")
+
+[node name="lamp" parent="table10/DeadBody4" instance=ExtResource("26_wcjgy")]
+transform = Transform3D(0.374152, 0.00556588, 1.02516, -8.33539e-10, 1, 2.69446e-09, -0.801193, 0.0402023, 0.477488, -1.54759, 0.0400882, -2.58809)
+
+[node name="lamp2" parent="table10/DeadBody4" instance=ExtResource("26_wcjgy")]
+transform = Transform3D(-0.568004, 0.0387879, 0.866, -2.26244e-09, 1, 1.70116e-10, -0.677696, 0.0119458, -0.727311, -1.32375, 0.0400882, 1.56779)
+
+[node name="lamp4" parent="table10/DeadBody4" instance=ExtResource("26_wcjgy")]
+transform = Transform3D(-0.880843, 0.0358741, 0.0980684, -1.69544e-09, 1, -1.92585e-09, -0.0775635, -0.0189802, -1.12664, -1.32316, 0.0400882, 0.518915)
+
+[node name="lamp3" parent="table10/DeadBody4" instance=ExtResource("26_wcjgy")]
+transform = Transform3D(-0.750747, 0.0172746, -0.598487, -4.51667e-10, 1, -2.84112e-09, 0.467203, -0.0367259, -0.959558, 1.05174, 0.0400882, 0.50565)
+
+[node name="jeff" parent="table10/DeadBody4/lamp3" instance=ExtResource("27_qarn0")]
+transform = Transform3D(-0.52969, 0.0378108, -1.08546, 1.31816e-16, 1, 8.98919e-16, 0.663616, -0.0553837, -0.527987, 0.0886745, -0.0230212, 1.66781)
+
+[node name="table9" parent="." instance=ExtResource("21_3x1x4")]
+transform = Transform3D(0, 0, -1.25, 0, 1.25, 0, 1.25, 0, 0, 31.3364, 0.550002, -9.84099)
+
+[node name="lamp8" parent="." instance=ExtResource("26_wcjgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3431, 2.07329, -9.90207)
+
+[node name="jeff9" parent="." instance=ExtResource("27_qarn0")]
+transform = Transform3D(0.376721, 0, -0.2175, 0, 0.435, 0, 0.2175, 0, 0.376721, 34.2012, 2.07329, -8.03971)
+
+[node name="jeff10" parent="." instance=ExtResource("27_qarn0")]
+transform = Transform3D(0.420178, 0, 0.112586, 0, 0.435, 0, -0.112586, 0, 0.420178, 34.163, 2.08128, -6.98592)
+
+[node name="lamp9" parent="." instance=ExtResource("34_nyv4g")]
+transform = Transform3D(-0.869167, 0, -0.494518, 0, 1, 0, 0.494518, 0, -0.869167, 34.7424, 2.07329, -5.93142)
+
+[node name="computer12" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(0.712381, 0, 0.701793, 0, 1, 0, -0.701793, 0, 0.712381, 29.8918, 2.07329, -9.84432)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="computer12"]
+transform = Transform3D(0.257487, 0, -0.966282, 0, 1, 0, 0.966282, 0, 0.257487, -0.0749493, 0.861057, 0.570071)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 14.21
+omni_range = 1.15
+
+[node name="computer13" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4023, 2.07329, -10.4271)
+
+[node name="computer14" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(0.861558, 0, -0.507659, 0, 1, 0, 0.507659, 0, 0.861558, 32.9728, 2.11844, -10.0838)
+
+[node name="computer15" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(0.712381, 0, 0.701793, 0, 1, 0, -0.701793, 0, 0.712381, 29.8614, 3.37778, -9.82804)
+
+[node name="computer16" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3692, 3.37778, -10.4368)
+
+[node name="computer17" parent="." instance=ExtResource("22_6jabr")]
+transform = Transform3D(0.861558, 0, -0.507659, 0, 1, 0, 0.507659, 0, 0.861558, 32.9493, 3.42293, -10.109)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="computer17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0784302, 0.51141, 0.385485)
+light_color = Color(0.808137, 3.32102e-06, 4.81307e-07, 1)
+light_energy = 14.21
+omni_range = 1.15
+
+[node name="keyboard3" parent="." instance=ExtResource("25_x8mj7")]
+transform = Transform3D(0.0124232, 0.00150337, -1.19493, -0.143564, 1.18635, 0, 1.18628, 0.143556, 0.0125138, 31.1822, 2.07329, -8.97147)
+
+[node name="mouse4" parent="." instance=ExtResource("25_5ihnm")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 32.2427, 2.07329, -9.2364)
+
+[node name="DeadBody8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.30729, 0, -0.951616, 0, 1, 0, 0.951616, 0, 0.30729, 25.4376, 0.550001, 2.96898)
+mesh = ExtResource("35_q5wmg")
+
+[node name="DeadBody6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 15.9692, 0.550001, 10.8992)
+mesh = ExtResource("36_tqtmw")
+
+[node name="DeadBody9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2485, 0.550002, 3.23676)
+mesh = ExtResource("35_q5wmg")
+
+[node name="DeadBody7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3032, 0.550001, -6.99054)
+mesh = ExtResource("33_bvfym")
+
+[node name="scalple" parent="." instance=ExtResource("37_bby4m")]
+transform = Transform3D(0.115, 0, 0, 0, 0.0297642, 0.111081, 0, -0.111081, 0.0297642, 30.129, 2.94126, 1.38326)
+
+[node name="scalple2" parent="." instance=ExtResource("37_bby4m")]
+transform = Transform3D(-0.041411, 0, -0.154548, 0, 0.16, 0, 0.154548, 0, -0.041411, 29.872, 2.07759, 0.213957)
+
+[node name="tweeser" parent="." instance=ExtResource("38_rq0w7")]
+transform = Transform3D(-0.0163425, 0.0627461, -0.12408, 0.138961, 0.00309534, -0.0167372, -0.00475803, -0.125113, -0.0626419, 29.2019, 2.13101, 0.0165846)

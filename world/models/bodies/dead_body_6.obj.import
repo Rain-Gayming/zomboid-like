@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dxnvct3jlprqi"
+path="res://.godot/imported/dead_body_6.obj-447316a4f74081f53c5f7a95af4ced8e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dead_body_6.obj-447316a4f74081f53c5f7a95af4ced8e.mesh"]
+
+source_file="res://world/models/bodies/dead_body_6.obj"
+dest_files=["res://.godot/imported/dead_body_6.obj-447316a4f74081f53c5f7a95af4ced8e.mesh", "res://.godot/imported/dead_body_6.obj-447316a4f74081f53c5f7a95af4ced8e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
