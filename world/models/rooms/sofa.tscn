@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://xx454j0wffyr"]
+
+[ext_resource type="PackedScene" uid="uid://bwryytuhe6q2d" path="res://world/models/rooms/sofa.blend" id="1_wk1c7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g61i3"]
+size = Vector3(2.37354, 1.0379, 5.41895)
+
+[node name="sofa" instance=ExtResource("1_wk1c7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.226807, 0.4758, 0)
+shape = SubResource("BoxShape3D_g61i3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.52425, 1.11712, 0)
+shape = SubResource("BoxShape3D_g61i3")
